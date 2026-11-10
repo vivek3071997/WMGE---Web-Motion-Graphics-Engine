@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <meta
+      name="description"
+      content="A local, open-source motion graphics studio for humans and AI agents."
+    />
+    <title>Motion Forge — Motion graphics studio</title>
+    <link rel="stylesheet" href="src/styles.css" />
+    <script defer src="src/icons.js"></script>
+    <script defer src="src/engine.js"></script>
+    <script defer src="src/examples.js"></script>
+    <script defer src="src/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark">M<span>F</span></span>
+        <div>
+          <strong>MOTION FORGE</strong
+          ><small>LOCAL MOTION STUDIO <i>1.0</i></small>
+        </div>
+      </div>
+      <div class="project-heading">
+        <input
+          id="project-name"
+          aria-label="Project name"
+          value="Systems in motion"
+        /><span id="save-status">Local project</span>
+      </div>
+      <div class="top-actions">
+        <button id="undo" title="Undo (⌘/Ctrl Z)">↶</button
+        ><button id="redo" title="Redo (⌘/Ctrl Shift Z)">↷</button
+        ><button id="ai-open" class="subtle">✦ AI workspace</button
+        ><button id="export-open" class="primary">
+          Export <span>↗</span>
+        </button>
+      </div>
+    </header>
+    <nav class="scene-strip" aria-label="Scenes">
+      <span class="section-label">STORYBOARD</span>
+      <div id="scenes"></div>
+      <button id="scene-add" title="Add a blank scene">＋ Scene</button
+      ><button id="scene-copy" title="Duplicate current scene">Duplicate</button
+      ><button id="scene-remove" title="Remove current scene">Remove</button>
+    </nav>
+    <main class="workspace">
+      <aside class="library">
+        <div class="panel-title">
+          <h2>Build your scene</h2>
+          <span class="chip">LIBRARY</span>
+        </div>
+        <div class="tabs" role="tablist">
+          <button
+            class="active"
+            id="tab-layers"
+            role="tab"
+            aria-selected="true"
+          >
+            Layers</button
+          ><button id="tab-assets" role="tab" aria-selected="false">
+            Assets
+          </button>
+        </div>
+        <section id="layers-panel">
+          <div class="add-grid">
+            <button data-add="text">T <span>Text</span></button
+            ><button data-add="rect">▱ <span>Shape</span></button
+            ><button data-add="circle">○ <span>Circle</span></button
+            ><button data-add="line">↗ <span>Connector</span></button
+            ><button data-add="chart">▥ <span>Chart</span></button
+            ><button data-add="counter"># <span>Counter</span></button
+            ><button data-add="group">▧ <span>Group</span></button
+            ><button data-add="path">⌁ <span>Path</span></button>
+          </div>
+          <div class="section-row">
+            <h3>SCENE LAYERS</h3>
+            <span id="layer-count"></span>
+          </div>
+          <p class="micro">Top row is frontmost. Drag on stage to move.</p>
+          <div id="layers" class="layer-list"></div>
+          <div class="layer-actions">
+            <button id="layer-copy">Duplicate</button
+            ><button id="layer-up" title="Bring forward">↑</button
+            ><button id="layer-down" title="Send backward">↓</button
+            ><button id="layer-remove" title="Delete selected layer">
+              Delete
+            </button>
+          </div>
+        </section>
+        <section id="assets-panel" hidden>
+          <label class="upload-zone" for="image-upload"
+            ><span>＋</span><strong>Add your images</strong
+            ><small>PNG · JPG · WebP · simple SVG</small></label
+          ><input
+            id="image-upload"
+            type="file"
+            accept="image/png,image/jpeg,image/webp,image/svg+xml"
+            multiple
+            hidden
+          />
+          <div class="section-row">
+            <h3>YOUR ASSETS</h3>
+            <span id="asset-count"></span>
+          </div>
+          <div id="asset-library"></div>
+          <div class="section-row">
+            <h3>MATERIAL ICONS</h3>
+            <span id="icon-count"></span>
+          </div>
+          <input
+            id="icon-search"
+            type="search"
+            placeholder="Search icons… memory, cloud"
+            aria-label="Search Material icons"
+          />
+          <div id="icon-grid"></div>
+          <p class="micro">
+            Google Material Icons · Apache 2.0<br />Bundled locally. No CDN or
+            account.
+          </p>
+        </section>
+        <div class="library-bottom">
+          <label
+            >Start from a template<select id="template-select">
+              <option value="">Choose a scene…</option>
+            </select></label
+          ><button id="template-add">Add template</button>
+        </div>
+      </aside>
+      <section class="studio">
+        <div class="canvas-toolbar">
+          <div>
+            <span class="live-dot"></span
+            ><input id="scene-name" aria-label="Scene name" />
+          </div>
+          <div class="canvas-options">
+            <label><input type="checkbox" id="safe-area" /> Safe area</label
+            ><button id="presentation">Clean preview</button
+            ><span id="resolution"></span>
+          </div>
+        </div>
+        <div class="canvas-wrap">
+          <div
+            id="stage"
+            tabindex="0"
+            aria-label="Motion graphics canvas"
+          ></div>
+        </div>
+        <div class="playbar">
+          <button id="restart" title="Restart">↤</button
+          ><button id="play" class="play" title="Play or pause (Space)">
+            ▶</button
+          ><output id="clock">00:00.00</output
+          ><input
+            type="range"
+            id="seek"
+            min="0"
+            max="10"
+            step="0.01"
+            value="0"
+            aria-label="Seek timeline"
+          /><span id="duration-display">10.0s</span
+          ><label class="loop-label"
+            ><input type="checkbox" id="loop" checked /> Loop</label
+          >
+        </div>
+        <div class="timeline-heading">
+          <h3>ANIMATION TIMELINE</h3>
+          <span>Click a track to select · drag the playhead above</span>
+        </div>
+        <div id="timeline"></div>
+        <footer class="studio-footer">
+          <span>Deterministic SVG renderer</span><span id="scene-summary"></span
+          ><a href="README.md" target="_blank" rel="noopener"
+            >Help &amp; guide ↗</a
+          >
+        </footer>
+      </section>
+      <aside class="inspector">
+        <div class="tabs">
+          <button id="tab-element" class="active">Element</button
+          ><button id="tab-scene">Scene &amp; theme</button>
+        </div>
+        <div id="element-inspector"></div>
+        <div id="scene-inspector" hidden></div>
+      </aside>
+    </main>
+    <div id="toast" role="status" aria-live="polite"></div>
+    <dialog id="ai-dialog">
+      <form method="dialog" class="dialog-head">
+        <div>
+          <h2>Build with any AI</h2>
+          <p>
+            Copy a brief, ask your LLM for project JSON, then paste the result
+            here.
+          </p>
+        </div>
+        <button aria-label="Close AI workspace">×</button>
+      </form>
+      <div class="dialog-body">
+        <label
+          >Your creative brief<textarea
+            id="ai-brief"
+            rows="3"
+            placeholder="Example: Explain how a CPU talks to memory in a 12-second scene. Use cyan and orange, with labelled data paths."
+          ></textarea>
+        </label>
+        <div class="button-row">
+          <button id="copy-prompt" class="primary">
+            Copy prompt + current project</button
+          ><button id="download-prompt">Download prompt</button
+          ><a href="agent/motion-forge/SKILL.md" target="_blank" rel="noopener"
+            >Agent guidelines ↗</a
+          >
+        </div>
+        <label
+          >Project JSON<textarea
+            id="json-editor"
+            spellcheck="false"
+            rows="12"
+            placeholder="Paste the complete project JSON here"
+          ></textarea>
+        </label>
+        <div id="json-errors" role="alert"></div>
+        <div class="button-row">
+          <button id="json-validate">Validate</button
+          ><button id="json-apply" class="primary">Apply project</button
+          ><button id="json-current">Load current JSON</button
+          ><label class="button"
+            >Open JSON<input
+              id="json-file"
+              type="file"
+              accept=".json,application/json"
+              hidden
+          /></label>
+        </div>
+      </div>
+    </dialog>
+    <dialog id="export-dialog">
+      <form method="dialog" class="dialog-head">
+        <div>
+          <h2>Export your work</h2>
+          <p>Portable project, crisp frames or a browser-recorded video.</p>
+        </div>
+        <button aria-label="Close export options">×</button>
+      </form>
+      <div class="dialog-body export-grid">
+        <button id="save-project">
+          <strong>Project JSON</strong
+          ><span>All scenes, animation and embedded images</span></button
+        ><button id="export-svg">
+          <strong>SVG frame</strong
+          ><span>Editable vector frame at the current time</span></button
+        ><button id="export-png">
+          <strong>PNG frame</strong
+          ><span>Current frame at project resolution</span></button
+        ><button id="export-video">
+          <strong>Record scene · WebM</strong
+          ><span>Real-time capture, no audio. Keep this tab visible.</span>
+        </button>
+      </div>
+      <div class="dialog-body">
+        <label
+          >Recording progress<progress
+            id="record-progress"
+            max="1"
+            value="0"
+          ></progress></label
+        ><button id="record-cancel" hidden>Stop recording</button>
+        <p class="micro">
+          For precise frame-by-frame output, use the included render tool.
+          Transparent backgrounds export to SVG/PNG; video uses the theme
+          background. This is a 2D engine, with no 3D simulation or audio
+          editor.
+        </p>
+      </div>
+    </dialog>
+    <noscript
+      >This editor needs JavaScript enabled. All project processing runs
+      locally.</noscript
+    >
+  </body>
+</html>

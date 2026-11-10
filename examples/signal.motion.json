@@ -1,0 +1,172 @@
+{
+  "version": 1,
+  "name": "Systems in motion",
+  "width": 1600,
+  "height": 900,
+  "fps": 30,
+  "theme": {
+    "background": "#0b1020",
+    "surface": "#182237",
+    "accent": "#8d9bff",
+    "secondary": "#56e0cf",
+    "text": "#f4f6ff",
+    "muted": "#91a0b8",
+    "line": "#34445e"
+  },
+  "assets": {},
+  "scenes": [
+    {
+      "id": "signal",
+      "name": "Signal processing",
+      "duration": 10,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface",
+        "grid": true,
+        "gridSize": 60,
+        "gridOpacity": 0.07
+      },
+      "layers": [
+        {
+          "id": "eyebrow",
+          "type": "text",
+          "name": "eyebrow",
+          "x": 100,
+          "y": 65,
+          "width": 1300,
+          "height": 23.400000000000002,
+          "enter": "fade",
+          "enterDuration": 0.75,
+          "text": "04 / SIGNALS",
+          "fontSize": 18,
+          "fill": "$accent",
+          "fontFamily": "mono"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "name": "title",
+          "x": 96,
+          "y": 112,
+          "width": 1300,
+          "height": 88.4,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "A signal becomes a story.",
+          "fontSize": 68,
+          "fill": "$text",
+          "fontWeight": 700,
+          "start": 0.1
+        },
+        {
+          "id": "subtitle",
+          "type": "text",
+          "name": "subtitle",
+          "x": 100,
+          "y": 207,
+          "width": 1300,
+          "height": 32.5,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "Path drawing, looping keyframes and travelling particles — driven by time.",
+          "fontSize": 25,
+          "fill": "$muted",
+          "start": 0.2
+        },
+        {
+          "id": "signal-panel",
+          "type": "rect",
+          "name": "signal panel",
+          "x": 100,
+          "y": 320,
+          "width": 1400,
+          "height": 370,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "fill": "$surface",
+          "stroke": "$line",
+          "radius": 24,
+          "start": 0.2
+        },
+        {
+          "id": "wave",
+          "type": "path",
+          "name": "wave",
+          "x": 130,
+          "y": 360,
+          "width": 1330,
+          "height": 260,
+          "enter": "draw",
+          "enterDuration": 3,
+          "d": "M 0 130 C 55 130 55 25 110 25 S 165 235 220 235 S 275 25 330 25 S 385 235 440 235 S 495 25 550 25 S 605 235 660 235 S 715 25 770 25 S 825 235 880 235 S 935 25 990 25 S 1045 235 1100 235 S 1155 25 1210 25 S 1265 130 1320 130",
+          "fill": "none",
+          "stroke": "$secondary",
+          "strokeWidth": 5,
+          "start": 0.7
+        },
+        {
+          "id": "scan",
+          "type": "rect",
+          "name": "scan",
+          "x": 130,
+          "y": 345,
+          "width": 4,
+          "height": 310,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "fill": "$accent",
+          "radius": 0,
+          "start": 0.7,
+          "tracks": [
+            {
+              "property": "x",
+              "loop": true,
+              "keyframes": [
+                {
+                  "time": 0.7,
+                  "value": 130
+                },
+                {
+                  "time": 6.7,
+                  "value": 1460,
+                  "easing": "linear"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "signal-caption",
+          "type": "text",
+          "name": "signal caption",
+          "x": 100,
+          "y": 735,
+          "width": 1300,
+          "height": 28.6,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "RAW INPUT",
+          "fontSize": 22,
+          "fill": "$secondary",
+          "fontFamily": "mono"
+        },
+        {
+          "id": "time-caption",
+          "type": "text",
+          "name": "time caption",
+          "x": 1360,
+          "y": 735,
+          "width": 140,
+          "height": 28.6,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "TIME →",
+          "fontSize": 22,
+          "fill": "$muted",
+          "fontFamily": "mono"
+        }
+      ]
+    }
+  ]
+}

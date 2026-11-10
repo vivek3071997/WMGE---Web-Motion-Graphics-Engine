@@ -1,0 +1,8 @@
+node_modules/
+test-output/
+renders/
+projects/
+.DS_Store
+*.log
+.env
+.env.*

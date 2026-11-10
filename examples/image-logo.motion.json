@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "name": "Custom image demonstration",
+  "width": 1600,
+  "height": 900,
+  "fps": 30,
+  "theme": {
+    "background": "#0b1020",
+    "surface": "#182237",
+    "accent": "#8d9bff",
+    "secondary": "#56e0cf",
+    "text": "#f4f6ff",
+    "muted": "#91a0b8",
+    "line": "#34445e"
+  },
+  "assets": {
+    "forgeLogo": {
+      "name": "Motion Forge demonstration mark",
+      "src": "data:image/png;base64,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",
+      "credit": "Motion Forge contributors; MIT license"
+    }
+  },
+  "scenes": [
+    {
+      "id": "brand",
+      "name": "Custom logo",
+      "duration": 10,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface",
+        "grid": true,
+        "gridSize": 60,
+        "gridOpacity": 0.07
+      },
+      "layers": [
+        {
+          "id": "eyebrow",
+          "type": "text",
+          "name": "eyebrow",
+          "x": 100,
+          "y": 65,
+          "width": 1300,
+          "height": 23.400000000000002,
+          "enter": "fade",
+          "enterDuration": 0.75,
+          "text": "06 / VISUAL EVIDENCE",
+          "fontSize": 18,
+          "fill": "$accent",
+          "fontFamily": "mono"
+        },
+        {
+          "id": "title",
+          "type": "text",
+          "name": "title",
+          "x": 96,
+          "y": 112,
+          "width": 1300,
+          "height": 88.4,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "A place for your brand.",
+          "fontSize": 68,
+          "fill": "$text",
+          "fontWeight": 700,
+          "start": 0.1
+        },
+        {
+          "id": "subtitle",
+          "type": "text",
+          "name": "subtitle",
+          "x": 100,
+          "y": 207,
+          "width": 1300,
+          "height": 32.5,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "Original demo logo, embedded in this portable project.",
+          "fontSize": 25,
+          "fill": "$muted",
+          "start": 0.2
+        },
+        {
+          "id": "evidence-card",
+          "type": "rect",
+          "name": "evidence card",
+          "x": 100,
+          "y": 315,
+          "width": 920,
+          "height": 450,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "fill": "$surface",
+          "stroke": "$line",
+          "radius": 24,
+          "start": 0.3
+        },
+        {
+          "id": "image-note",
+          "type": "text",
+          "name": "image note",
+          "x": 195,
+          "y": 690,
+          "width": 800,
+          "height": 23.400000000000002,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "ORIGINAL DEMO ASSET · MIT LICENSE",
+          "fontSize": 18,
+          "fill": "$muted",
+          "fontFamily": "mono",
+          "start": 1
+        },
+        {
+          "id": "evidence-label",
+          "type": "text",
+          "name": "evidence label",
+          "x": 1090,
+          "y": 360,
+          "width": 400,
+          "height": 26,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "YOUR IMAGE / YOUR STYLE",
+          "fontSize": 20,
+          "fill": "$secondary",
+          "start": 0.6
+        },
+        {
+          "id": "evidence-title",
+          "type": "text",
+          "name": "evidence title",
+          "x": 1090,
+          "y": 415,
+          "width": 410,
+          "height": 55.9,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "Edit the scene.\nKeep your assets.",
+          "fontSize": 43,
+          "fill": "$text",
+          "fontWeight": 700,
+          "start": 0.9
+        },
+        {
+          "id": "evidence-caption",
+          "type": "text",
+          "name": "evidence caption",
+          "x": 1090,
+          "y": 585,
+          "width": 420,
+          "height": 31.200000000000003,
+          "enter": "rise",
+          "enterDuration": 0.75,
+          "text": "Transparent PNG / WebP\nEmbedded in the project\nReady for any LLM workflow",
+          "fontSize": 24,
+          "fill": "$muted",
+          "start": 1.2
+        },
+        {
+          "id": "brand-mark",
+          "type": "image",
+          "name": "Original logo asset",
+          "asset": "forgeLogo",
+          "x": 380,
+          "y": 350,
+          "width": 360,
+          "height": 300,
+          "radius": 0,
+          "fit": "contain",
+          "enter": "scale",
+          "start": 0.5,
+          "enterDuration": 1
+        }
+      ]
+    }
+  ]
+}

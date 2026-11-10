@@ -1,0 +1,29 @@
+{
+  "name": "motion-forge-studio",
+  "version": "1.0.0",
+  "description": "An offline-first SVG motion graphics editor with portable AI agent guidelines.",
+  "private": true,
+  "license": "MIT",
+  "main": "src/engine.js",
+  "scripts": {
+    "start": "node scripts/serve.cjs",
+    "test": "node --test tests/engine.test.cjs",
+    "test:browser": "node tests/browser.cjs",
+    "validate": "node scripts/validate.cjs",
+    "render": "node scripts/render.cjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vivek3071997/WMGE---Web-Motion-Graphics-Engine.git"
+  },
+  "homepage": "https://github.com/vivek3071997/WMGE---Web-Motion-Graphics-Engine#readme",
+  "bugs": {
+    "url": "https://github.com/vivek3071997/WMGE---Web-Motion-Graphics-Engine/issues"
+  }
+}

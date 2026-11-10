@@ -1,0 +1,924 @@
+{
+  "upstream": "https://github.com/google/material-design-icons",
+  "commit": "10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7",
+  "license": "Apache-2.0",
+  "icons": [
+    {
+      "name": "add",
+      "category": "content",
+      "file": "add.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/add/materialicons/24px.svg",
+      "sha256": "475c29758b4a689598f80099714362c0340ad3a4bc111e2d88807bbf4b0f817e"
+    },
+    {
+      "name": "alternate_email",
+      "category": "communication",
+      "file": "alternate_email.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/communication/alternate_email/materialicons/24px.svg",
+      "sha256": "9ad5b26c479741defbe0b6a58ead6d2429712cad815f5337c13a7a7df412b588"
+    },
+    {
+      "name": "analytics",
+      "category": "action",
+      "file": "analytics.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/analytics/materialicons/24px.svg",
+      "sha256": "e5e73429510c92078f035b3ec2c9228ad7beb8734cb3b9a70e3c6918fa0b1e01"
+    },
+    {
+      "name": "api",
+      "category": "action",
+      "file": "api.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/api/materialicons/24px.svg",
+      "sha256": "133cf7455534552d5c2cc3cdc6adc961c9b6ea1f08ebf54607035244f6706e09"
+    },
+    {
+      "name": "arrow_back",
+      "category": "navigation",
+      "file": "arrow_back.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/arrow_back/materialicons/24px.svg",
+      "sha256": "e1590e051f577d02ec994e7cc6005a2bc96407a3d1ba2d7ce6825fb80402684c"
+    },
+    {
+      "name": "arrow_downward",
+      "category": "navigation",
+      "file": "arrow_downward.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/arrow_downward/materialicons/24px.svg",
+      "sha256": "61643262c55c5fe4022407585d2609a7e3e73420ff93267931148a5eb9782790"
+    },
+    {
+      "name": "arrow_forward",
+      "category": "navigation",
+      "file": "arrow_forward.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/arrow_forward/materialicons/24px.svg",
+      "sha256": "2f48309fb6ccc7b38a6412757801cd7d07e40b492f64e7146e8899d5a0e7c39a"
+    },
+    {
+      "name": "arrow_upward",
+      "category": "navigation",
+      "file": "arrow_upward.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/arrow_upward/materialicons/24px.svg",
+      "sha256": "473799e3e3c53c8f7417f80fe797cf6c2a55886cc415f8a7972b8e55abd82ec1"
+    },
+    {
+      "name": "auto_awesome",
+      "category": "image",
+      "file": "auto_awesome.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/auto_awesome/materialicons/24px.svg",
+      "sha256": "232622cbc42585d6c299ecc505e73f7d53cff9c76ef0d09432539b1f3fe5702e"
+    },
+    {
+      "name": "bar_chart",
+      "category": "editor",
+      "file": "bar_chart.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/bar_chart/materialicons/24px.svg",
+      "sha256": "5abe3390a29d11d9a3e2e212224d5196272a9072ae8bb76c963bf18fee4d5fe1"
+    },
+    {
+      "name": "battery_full",
+      "category": "device",
+      "file": "battery_full.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/battery_full/materialicons/24px.svg",
+      "sha256": "67f427dbaca071849dda06cbc2088097e27cb37a105611455ff25869a9656307"
+    },
+    {
+      "name": "bluetooth",
+      "category": "device",
+      "file": "bluetooth.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/bluetooth/materialicons/24px.svg",
+      "sha256": "eebb4d73c5433705523c53c0c4c4353c1afe0f21b5d8d38cee9ef532d01db3be"
+    },
+    {
+      "name": "blur_on",
+      "category": "image",
+      "file": "blur_on.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/blur_on/materialicons/24px.svg",
+      "sha256": "4ea6d3100d97a3b346895d82e8a3c2afe0dc060faa54cc19ed1601902c3c6c07"
+    },
+    {
+      "name": "bolt",
+      "category": "content",
+      "file": "bolt.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/bolt/materialicons/24px.svg",
+      "sha256": "78d7db575331d90149621aa54bda0deff2900d00bcfab8dfe630ec1933cedcca"
+    },
+    {
+      "name": "build",
+      "category": "action",
+      "file": "build.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/build/materialicons/24px.svg",
+      "sha256": "df34fba3d09778db69503a23b688761051dbf65b5bccb0d7b729c69ff61c3804"
+    },
+    {
+      "name": "call",
+      "category": "communication",
+      "file": "call.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/communication/call/materialicons/24px.svg",
+      "sha256": "e1498e438608be4ddff4690d25879fdecd6fc0bcd298e0dd22c0d9c8ae51b9cf"
+    },
+    {
+      "name": "cast",
+      "category": "hardware",
+      "file": "cast.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/cast/materialicons/24px.svg",
+      "sha256": "cff2a1a91cab15ffd5e810268ffdf3d5530efef744c7c9c6f8e5657b3c9ad136"
+    },
+    {
+      "name": "chat",
+      "category": "communication",
+      "file": "chat.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/communication/chat/materialicons/24px.svg",
+      "sha256": "1d2fce8db28476d35abd3e4c0adf8cd0a9a0390a576b6f1fc39a3834c6873545"
+    },
+    {
+      "name": "check_circle",
+      "category": "action",
+      "file": "check_circle.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/check_circle/materialicons/24px.svg",
+      "sha256": "8cc55033374cb5a5d09fd396e4831ed12ca4915184832856de9e1006fc3b25c2"
+    },
+    {
+      "name": "chevron_right",
+      "category": "navigation",
+      "file": "chevron_right.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/chevron_right/materialicons/24px.svg",
+      "sha256": "927f3948559fc75c26f4f84ec09bd1eec1e92f5ddafbea26e4a821d06c2d0dc1"
+    },
+    {
+      "name": "close",
+      "category": "navigation",
+      "file": "close.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/close/materialicons/24px.svg",
+      "sha256": "b54342456d5a7f2da53795147f8af36ec76fbf5b57d792fe75f07538e6c6783e"
+    },
+    {
+      "name": "cloud",
+      "category": "file",
+      "file": "cloud.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/file/cloud/materialicons/24px.svg",
+      "sha256": "b54f3514ea8691d08081220c9deb3c2aac5703b9a536e212bb854cabe4c31197"
+    },
+    {
+      "name": "cloud_download",
+      "category": "file",
+      "file": "cloud_download.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/file/cloud_download/materialicons/24px.svg",
+      "sha256": "28fb08608f590809a469139508eb01f4a75dde52a8775da1a2ffff20acb0682f"
+    },
+    {
+      "name": "cloud_upload",
+      "category": "file",
+      "file": "cloud_upload.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/file/cloud_upload/materialicons/24px.svg",
+      "sha256": "a9c5c9fd5059f58811e89a60a188bb3b7b33d7b1b126b5eb582f1a4dc18d2363"
+    },
+    {
+      "name": "code",
+      "category": "action",
+      "file": "code.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/code/materialicons/24px.svg",
+      "sha256": "5c4415c78335a94353a4ba07423365bb167aa49d8f9963cfb1b7aa7bc10acf9f"
+    },
+    {
+      "name": "compare",
+      "category": "image",
+      "file": "compare.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/compare/materialicons/24px.svg",
+      "sha256": "7971ff73708bbc9f17594c9b674477fa0a909e9cbd56b99727b37281352d967f"
+    },
+    {
+      "name": "computer",
+      "category": "hardware",
+      "file": "computer.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/computer/materialicons/24px.svg",
+      "sha256": "2e8b0e0ed413b797ab1c7243f588989a3b9c6636290f1b89f208c649ad9637e7"
+    },
+    {
+      "name": "content_copy",
+      "category": "content",
+      "file": "content_copy.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/content_copy/materialicons/24px.svg",
+      "sha256": "6f6b2c7038f181364540792ce558bbf09980b0204b2faee0f3964ec100b4739e"
+    },
+    {
+      "name": "crop",
+      "category": "image",
+      "file": "crop.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/crop/materialicons/24px.svg",
+      "sha256": "7c855aaf5c6e16c665e7d9f5310d12e3bc552096e99850d4f4321338bce4a59d"
+    },
+    {
+      "name": "dashboard",
+      "category": "action",
+      "file": "dashboard.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/dashboard/materialicons/24px.svg",
+      "sha256": "70e13e1dd263d8c0c45eaf0e80264ed1b463b3bf20b31557dbce6e13b4ec3ed2"
+    },
+    {
+      "name": "data_exploration",
+      "category": "action",
+      "file": "data_exploration.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/data_exploration/materialicons/24px.svg",
+      "sha256": "90f9ebcb31be15f8ef9841831685209a6ebc65336aece0cd02f3640a4cfbae27"
+    },
+    {
+      "name": "data_usage",
+      "category": "device",
+      "file": "data_usage.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/data_usage/materialicons/24px.svg",
+      "sha256": "21ec7c2ff430b2a9b42094081e39f5979bd831dbeeadcd8975163d6f99b00414"
+    },
+    {
+      "name": "desktop_windows",
+      "category": "hardware",
+      "file": "desktop_windows.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/desktop_windows/materialicons/24px.svg",
+      "sha256": "440a7b1e0340786ed048f96a37cba41f363cd3ad1b85dd4602f07a2c3201775b"
+    },
+    {
+      "name": "developer_board",
+      "category": "hardware",
+      "file": "developer_board.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/developer_board/materialicons/24px.svg",
+      "sha256": "bba30c64d5804a4976c0314f12fbdb7c533354b2ddbed430590c3b7186dc8fed"
+    },
+    {
+      "name": "developer_mode",
+      "category": "device",
+      "file": "developer_mode.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/developer_mode/materialicons/24px.svg",
+      "sha256": "c8b90c61f86e1fd7f25904553a58a1c79b753fe6e6bb3596f8da42ef7b474328"
+    },
+    {
+      "name": "device_hub",
+      "category": "hardware",
+      "file": "device_hub.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/device_hub/materialicons/24px.svg",
+      "sha256": "b5880ebcedad051215cfed5cfa0334a83e065030e51847e45d553b84d28fffba"
+    },
+    {
+      "name": "devices",
+      "category": "device",
+      "file": "devices.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/devices/materialicons/24px.svg",
+      "sha256": "2b198db04b4527f5ae082188b62161c54cc06d9ca253a418a783bc7c679d81d7"
+    },
+    {
+      "name": "dns",
+      "category": "action",
+      "file": "dns.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/dns/materialicons/24px.svg",
+      "sha256": "af6ac146ec9d8c9ceb67cefaa149b914eb6d7861a07de31db17c6f50117bfac5"
+    },
+    {
+      "name": "download",
+      "category": "file",
+      "file": "download.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/file/download/materialicons/24px.svg",
+      "sha256": "2895c5994613c1f4a8cbc802290873a24b4e1dee3cbc068dd7cb08622e6d31b5"
+    },
+    {
+      "name": "equalizer",
+      "category": "av",
+      "file": "equalizer.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/equalizer/materialicons/24px.svg",
+      "sha256": "be159a81ddcb63a519b3dff207981cd84a4009077e867eb98c559ee1da94a308"
+    },
+    {
+      "name": "expand_more",
+      "category": "navigation",
+      "file": "expand_more.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/expand_more/materialicons/24px.svg",
+      "sha256": "fe0ef658114738f046347758fc2f00dddd7e98fadc930048e34675d9153472ac"
+    },
+    {
+      "name": "explore",
+      "category": "action",
+      "file": "explore.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/explore/materialicons/24px.svg",
+      "sha256": "5fdb65e9bc24dacac5c1e1d88c546858a8fc9e8842b744a5c306334544696d20"
+    },
+    {
+      "name": "extension",
+      "category": "action",
+      "file": "extension.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/extension/materialicons/24px.svg",
+      "sha256": "ad6f33eb7c2f179557cb2177feb5d58d3cc1018cb6111055e1c05b4c8e6761dc"
+    },
+    {
+      "name": "filter_center_focus",
+      "category": "image",
+      "file": "filter_center_focus.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/filter_center_focus/materialicons/24px.svg",
+      "sha256": "51e25be2e18af90bdf9a067c4ac2be5669ef27b636c7ed23aa8b96830f175c4d"
+    },
+    {
+      "name": "filter_list",
+      "category": "content",
+      "file": "filter_list.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/filter_list/materialicons/24px.svg",
+      "sha256": "da5f9ac466b2a296bdbbcee8eef2eaecf992207e83b8304451701e2e13a2bc0f"
+    },
+    {
+      "name": "fingerprint",
+      "category": "action",
+      "file": "fingerprint.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/fingerprint/materialicons/24px.svg",
+      "sha256": "8e1690314af2844eff0c58874a7bc352c87a2ea4a0948b07ea3fed6e41b2f5cc"
+    },
+    {
+      "name": "folder",
+      "category": "file",
+      "file": "folder.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/file/folder/materialicons/24px.svg",
+      "sha256": "f287ca4017ccbe8ff3c562acdd036a3ae88acb8637fb713f0c65b1b2f9a35b61"
+    },
+    {
+      "name": "format_color_fill",
+      "category": "editor",
+      "file": "format_color_fill.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/format_color_fill/materialicons/24px.svg",
+      "sha256": "f7e04a330e4f00d69a11469cd4d193425bc4884b33a1824041a28dd4e432562a"
+    },
+    {
+      "name": "forum",
+      "category": "communication",
+      "file": "forum.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/communication/forum/materialicons/24px.svg",
+      "sha256": "50b41987c68f237993c6988c09c788e3a450bc80c9546d0916617985f380821c"
+    },
+    {
+      "name": "functions",
+      "category": "editor",
+      "file": "functions.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/functions/materialicons/24px.svg",
+      "sha256": "77bb6e3698236ce796100552fea8f7f1d6bf50435998fecb0bc69fb5fa328d3e"
+    },
+    {
+      "name": "gradient",
+      "category": "image",
+      "file": "gradient.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/gradient/materialicons/24px.svg",
+      "sha256": "fa1f21a4d943d84a86ffda4ce5711ee602ffd4f0343dff5f5c286df173f4d32c"
+    },
+    {
+      "name": "graphic_eq",
+      "category": "device",
+      "file": "graphic_eq.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/graphic_eq/materialicons/24px.svg",
+      "sha256": "56c3d82a9634f959c27620e8c08e2a5e26fa9a854a61abe2bca189c23ab77751"
+    },
+    {
+      "name": "groups",
+      "category": "social",
+      "file": "groups.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/social/groups/materialicons/24px.svg",
+      "sha256": "f4faba80b2fd550db39f2d0df74419dde99be1e2deb5729b5e59e81aaf7b25be"
+    },
+    {
+      "name": "headset",
+      "category": "hardware",
+      "file": "headset.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/headset/materialicons/24px.svg",
+      "sha256": "f38b5077f926b93ae1693f1726952e24b8d03d745e717eeaad2cfa8d05db1766"
+    },
+    {
+      "name": "help",
+      "category": "action",
+      "file": "help.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/help/materialicons/24px.svg",
+      "sha256": "130d5d3eaa72de2905720c0aeedac65f688eb224188b04134f2ae998dd85d0e6"
+    },
+    {
+      "name": "history",
+      "category": "action",
+      "file": "history.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/history/materialicons/24px.svg",
+      "sha256": "3d63bf10617ed68dde0d0c99d5d38892317a6439d6582f30b08bc3727cb26f14"
+    },
+    {
+      "name": "image",
+      "category": "image",
+      "file": "image.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/image/materialicons/24px.svg",
+      "sha256": "6cb8813b8bd05133f2871ff948814cb258c599d5931e2a4e9bf165675d99fc07"
+    },
+    {
+      "name": "info",
+      "category": "action",
+      "file": "info.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/info/materialicons/24px.svg",
+      "sha256": "5e3fe070eee9ca124d7591296c8052943d43d412aa25193284e7fde535180aa7"
+    },
+    {
+      "name": "input",
+      "category": "action",
+      "file": "input.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/input/materialicons/24px.svg",
+      "sha256": "6d75e72a3d6a8475826fd5a853159ee40b04be5f67e3446272cc8d390337fa16"
+    },
+    {
+      "name": "insert_drive_file",
+      "category": "editor",
+      "file": "insert_drive_file.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/insert_drive_file/materialicons/24px.svg",
+      "sha256": "1d08e14befdb44d6767807fdb8e427376bf7bf8c61f4d2baae4058a1be089e2e"
+    },
+    {
+      "name": "integration_instructions",
+      "category": "action",
+      "file": "integration_instructions.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/integration_instructions/materialicons/24px.svg",
+      "sha256": "ee3ccd489fadeaff77ba49f6960b317eb3fb7baa47c5d5b9b141f65880f697be"
+    },
+    {
+      "name": "inventory_2",
+      "category": "content",
+      "file": "inventory_2.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/inventory_2/materialicons/24px.svg",
+      "sha256": "00e623cea897ac5b34affd9a56cb676df65e236e7b3b44b5c5c0db3bc65aae7d"
+    },
+    {
+      "name": "keyboard",
+      "category": "hardware",
+      "file": "keyboard.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/keyboard/materialicons/24px.svg",
+      "sha256": "22ad5a5d2fb0c78566cd6fa022544c5cdb6c8d71fefaef82dcd9c7918b57802b"
+    },
+    {
+      "name": "language",
+      "category": "action",
+      "file": "language.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/language/materialicons/24px.svg",
+      "sha256": "db9cffe859b42529b8f13f3faae868c15100e824a26abd5bace0902ee29e00ab"
+    },
+    {
+      "name": "laptop",
+      "category": "hardware",
+      "file": "laptop.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/laptop/materialicons/24px.svg",
+      "sha256": "c0574cbfe72f80bd1381d97212a98f7d8d5793ff2693624a8d62402387b782aa"
+    },
+    {
+      "name": "layers",
+      "category": "maps",
+      "file": "layers.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/maps/layers/materialicons/24px.svg",
+      "sha256": "8d628fb23fd971f3efc4ef7c436d6d6d453c46c924094e7ebd0b8bdbeeceecb3"
+    },
+    {
+      "name": "linear_scale",
+      "category": "editor",
+      "file": "linear_scale.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/linear_scale/materialicons/24px.svg",
+      "sha256": "4917084b24f1db800e89a02909d1eb8fc15542b33554d88edd48734a5275e3e8"
+    },
+    {
+      "name": "link",
+      "category": "content",
+      "file": "link.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/link/materialicons/24px.svg",
+      "sha256": "1182c09f6e05c64ac491bdcc575cff537bc1157dbb79fdc34d67a15b0c7a8a47"
+    },
+    {
+      "name": "local_shipping",
+      "category": "maps",
+      "file": "local_shipping.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/maps/local_shipping/materialicons/24px.svg",
+      "sha256": "14cd105e19a0b25ea19736a989d35e488ea35dbaef711b1cd9a95e4fa5e4b48f"
+    },
+    {
+      "name": "location_on",
+      "category": "communication",
+      "file": "location_on.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/communication/location_on/materialicons/24px.svg",
+      "sha256": "169fc28757df3b951b811c2c98246da0ad4d0908ef121306fe092824e1711227"
+    },
+    {
+      "name": "lock",
+      "category": "action",
+      "file": "lock.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/lock/materialicons/24px.svg",
+      "sha256": "33b9bc04d9e69c5f4eb8ea5d49b240c4fdc1da973c7571235cbca1fa6f80394d"
+    },
+    {
+      "name": "lock_open",
+      "category": "action",
+      "file": "lock_open.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/lock_open/materialicons/24px.svg",
+      "sha256": "8ddee469a06a557ff8f2f2f95a853a754881575c7284ac7611e04f24108ad0d9"
+    },
+    {
+      "name": "loop",
+      "category": "av",
+      "file": "loop.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/loop/materialicons/24px.svg",
+      "sha256": "9b26d0443dddfad8b09207247c7f655d7395be79b7279e8ac37ae50483347d4e"
+    },
+    {
+      "name": "map",
+      "category": "maps",
+      "file": "map.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/maps/map/materialicons/24px.svg",
+      "sha256": "e647b14d7d3bd38a1e8322d3e77e45979b8424a4164d165e7d5bbb4ea6b92520"
+    },
+    {
+      "name": "memory",
+      "category": "hardware",
+      "file": "memory.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/memory/materialicons/24px.svg",
+      "sha256": "204fa6341a4a9d4c2fdcab6e778a39aa06ea412ce043e780482c145438610dcd"
+    },
+    {
+      "name": "menu",
+      "category": "navigation",
+      "file": "menu.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/menu/materialicons/24px.svg",
+      "sha256": "5222c9f8a54b1023571595636174fa96d136a3c245d80168702888151193762f"
+    },
+    {
+      "name": "mic",
+      "category": "av",
+      "file": "mic.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/mic/materialicons/24px.svg",
+      "sha256": "2597239521622c3e8f1880df5f7223d3caefc6da148eda11af47e82810192279"
+    },
+    {
+      "name": "mouse",
+      "category": "hardware",
+      "file": "mouse.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/mouse/materialicons/24px.svg",
+      "sha256": "512a7d95c302ae6fb98b7055c9a19534f9e675bdddf2ff81a916c655344cfb15"
+    },
+    {
+      "name": "movie",
+      "category": "av",
+      "file": "movie.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/movie/materialicons/24px.svg",
+      "sha256": "1da0dc880238a06b28535533e7aa4d0886da2fb4d230925faada3ffeea2078be"
+    },
+    {
+      "name": "music_note",
+      "category": "image",
+      "file": "music_note.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/music_note/materialicons/24px.svg",
+      "sha256": "02c754494d22c3b102fdb58e376221420001a55b7d231c99b590558621468058"
+    },
+    {
+      "name": "network_wifi",
+      "category": "device",
+      "file": "network_wifi.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/network_wifi/materialicons/24px.svg",
+      "sha256": "f3ab13e99ace09036e4b01af5862835095d47c57fa05495119f7a64630acf276"
+    },
+    {
+      "name": "output",
+      "category": "action",
+      "file": "output.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/output/materialicons/24px.svg",
+      "sha256": "56cbd14833f40d88664122b21acab0f30fc4e283a657e4116d8c7abfbf908a4f"
+    },
+    {
+      "name": "palette",
+      "category": "image",
+      "file": "palette.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/palette/materialicons/24px.svg",
+      "sha256": "2b63469be9cdae9b250d533d25be336ac79f8d43d700463d071a0d30593a76c3"
+    },
+    {
+      "name": "pause",
+      "category": "av",
+      "file": "pause.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/pause/materialicons/24px.svg",
+      "sha256": "e761b758c1062e3aed85186ded662bf63dc7ee7f2e495d5feddc5041fe9ccd73"
+    },
+    {
+      "name": "person",
+      "category": "social",
+      "file": "person.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/social/person/materialicons/24px.svg",
+      "sha256": "b3a98217a56e54c9ec91138f1c22c0c85163407c955dfd0c8c46b9192e5667f5"
+    },
+    {
+      "name": "phone_android",
+      "category": "hardware",
+      "file": "phone_android.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/phone_android/materialicons/24px.svg",
+      "sha256": "43d60f162bf5539ff21e26c23c13a73daa64529dad3e199ad3d10745d66c01b1"
+    },
+    {
+      "name": "photo",
+      "category": "image",
+      "file": "photo.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/photo/materialicons/24px.svg",
+      "sha256": "6cb8813b8bd05133f2871ff948814cb258c599d5931e2a4e9bf165675d99fc07"
+    },
+    {
+      "name": "pie_chart",
+      "category": "editor",
+      "file": "pie_chart.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/pie_chart/materialicons/24px.svg",
+      "sha256": "4e9d090ee5894ffdc9212f1269feffc70c2d2e179976756e41053534da14a3c8"
+    },
+    {
+      "name": "play_arrow",
+      "category": "av",
+      "file": "play_arrow.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/play_arrow/materialicons/24px.svg",
+      "sha256": "39d601c1d4199c5cadddf5f96a1f57157147d1eedc7a147cdadc29805c6d5fea"
+    },
+    {
+      "name": "psychology",
+      "category": "social",
+      "file": "psychology.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/social/psychology/materialicons/24px.svg",
+      "sha256": "633ecc7bab07139211ea019e511c9dee94b748bf722236cbe845ec82e73a1056"
+    },
+    {
+      "name": "public",
+      "category": "social",
+      "file": "public.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/social/public/materialicons/24px.svg",
+      "sha256": "c60043260a530ae01a2bf4214d7e91465284184145d77025689bb1c684ac41af"
+    },
+    {
+      "name": "push_pin",
+      "category": "content",
+      "file": "push_pin.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/push_pin/materialicons/24px.svg",
+      "sha256": "93e72d0395250e7a75c702dc0df010e6756dded05ffcebe72bb9715788518a8f"
+    },
+    {
+      "name": "query_stats",
+      "category": "editor",
+      "file": "query_stats.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/query_stats/materialicons/24px.svg",
+      "sha256": "5fc6c024d3f5a5c3a19815c8574c91763237ead874a0648149884d1e9f77e8fd"
+    },
+    {
+      "name": "refresh",
+      "category": "navigation",
+      "file": "refresh.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/navigation/refresh/materialicons/24px.svg",
+      "sha256": "48954ebff577688aa2c6d5816133726035103938ab766f6f8763a5da6d0e5fb9"
+    },
+    {
+      "name": "remove",
+      "category": "content",
+      "file": "remove.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/remove/materialicons/24px.svg",
+      "sha256": "ddb31b1d29bec31f6c96badaadee121ee8a5a096379d35d049848d8cc5deaeb9"
+    },
+    {
+      "name": "replay",
+      "category": "av",
+      "file": "replay.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/replay/materialicons/24px.svg",
+      "sha256": "a0de348433c861e90cfd24ff6a43f27c30ab3cf57caa8dfdb977916ea0b69250"
+    },
+    {
+      "name": "rocket_launch",
+      "category": "action",
+      "file": "rocket_launch.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/rocket_launch/materialicons/24px.svg",
+      "sha256": "1570548755bb146f40e2065a06258228ece9b45d73458f5f470617f31cb04931"
+    },
+    {
+      "name": "rotate_right",
+      "category": "image",
+      "file": "rotate_right.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/rotate_right/materialicons/24px.svg",
+      "sha256": "8a4d83bef6f425b90f3db8f52d958861fdfebcec471b8144b879165e4d6460a4"
+    },
+    {
+      "name": "route",
+      "category": "maps",
+      "file": "route.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/maps/route/materialicons/24px.svg",
+      "sha256": "d9c95c19ce4b5daff331d59d2b3c271c503f1ba6edf1801c19fb8c038c3a3f9e"
+    },
+    {
+      "name": "router",
+      "category": "hardware",
+      "file": "router.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/router/materialicons/24px.svg",
+      "sha256": "dde5bcd46700eb7aceb76547d4e5021d79aed669bc6e0c41817125274332a9d7"
+    },
+    {
+      "name": "satellite",
+      "category": "maps",
+      "file": "satellite.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/maps/satellite/materialicons/24px.svg",
+      "sha256": "4a43eec4a4465a8dfc39f6380143c4c374e8abfd145f73c08702a7b45b39fcd3"
+    },
+    {
+      "name": "save",
+      "category": "content",
+      "file": "save.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/content/save/materialicons/24px.svg",
+      "sha256": "6e4f136963e84ee9b485e50ec2d241c01b732f8852dfcdb11a7ee946c3d0b5bf"
+    },
+    {
+      "name": "schedule",
+      "category": "action",
+      "file": "schedule.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/schedule/materialicons/24px.svg",
+      "sha256": "22d5a7b0e4394b7d359436c6dbaefa72187ee3433867cf108cd2f4be31a1aa26"
+    },
+    {
+      "name": "schema",
+      "category": "editor",
+      "file": "schema.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/schema/materialicons/24px.svg",
+      "sha256": "b90b00ddc1251f55c6b9508c218d7eb67505d9cc0cb1561b6d5d0f03b77f5eba"
+    },
+    {
+      "name": "school",
+      "category": "social",
+      "file": "school.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/social/school/materialicons/24px.svg",
+      "sha256": "7860891046e6fc49681f4cb0a0ad4d47a621150cc1037b20e7a8a49212da077b"
+    },
+    {
+      "name": "science",
+      "category": "social",
+      "file": "science.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/social/science/materialicons/24px.svg",
+      "sha256": "8fe8861dc87722a6b78fff29eb7e683f14d26f1b6aa55c38852caf57a3c595c2"
+    },
+    {
+      "name": "search",
+      "category": "action",
+      "file": "search.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/search/materialicons/24px.svg",
+      "sha256": "c25d4cdca9972ef7ed9f8e9f32553d0444afd6a7cf8cc6ca9eebf5b4073ef308"
+    },
+    {
+      "name": "security",
+      "category": "hardware",
+      "file": "security.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/security/materialicons/24px.svg",
+      "sha256": "6556bb21f1c209cb6f2672f13cc4b04b15da6873408e4ac5cdd259ef61326cf7"
+    },
+    {
+      "name": "settings",
+      "category": "action",
+      "file": "settings.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/settings/materialicons/24px.svg",
+      "sha256": "86a35d4b8dd844c6a89f6b195b1600367cb52b8465847a0e7bbc8b3365c3983d"
+    },
+    {
+      "name": "show_chart",
+      "category": "editor",
+      "file": "show_chart.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/show_chart/materialicons/24px.svg",
+      "sha256": "017ac8017446bdab190be21cb68d69aac5e869727945af55d628f5c1b8370452"
+    },
+    {
+      "name": "signal_cellular_alt",
+      "category": "device",
+      "file": "signal_cellular_alt.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/signal_cellular_alt/materialicons/24px.svg",
+      "sha256": "73ceb5d78796b69a5225e3f0756d33a5c0feb6d129406f185f8b7e1dc113efdc"
+    },
+    {
+      "name": "sim_card",
+      "category": "hardware",
+      "file": "sim_card.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/sim_card/materialicons/24px.svg",
+      "sha256": "76070e890375ab800287607f3f294bf13e0604237c0c669823dcefd8f793e57f"
+    },
+    {
+      "name": "smartphone",
+      "category": "hardware",
+      "file": "smartphone.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/smartphone/materialicons/24px.svg",
+      "sha256": "6d77ff5a5d4a95c51a0d93f859388f21ec73bf06ba09e70b0b73643e69dc9830"
+    },
+    {
+      "name": "speed",
+      "category": "av",
+      "file": "speed.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/speed/materialicons/24px.svg",
+      "sha256": "87513955a17064ada69e0bc6b42d080064779a909a5b18c9a6b44ad552a748c5"
+    },
+    {
+      "name": "stop",
+      "category": "av",
+      "file": "stop.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/stop/materialicons/24px.svg",
+      "sha256": "f8fa3ab06887774e976b3090df0f377bf2bb8bdfccf6f174f63085076e159f45"
+    },
+    {
+      "name": "storage",
+      "category": "device",
+      "file": "storage.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/storage/materialicons/24px.svg",
+      "sha256": "1d674a55242b71379d8bdda304d41b55828a5e35773eadce180cfd0b12d1a358"
+    },
+    {
+      "name": "table_chart",
+      "category": "editor",
+      "file": "table_chart.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/table_chart/materialicons/24px.svg",
+      "sha256": "22054808375ead2569e110f7216b56880a3ef0bf073d9c868fdc235acd17cba2"
+    },
+    {
+      "name": "terminal",
+      "category": "action",
+      "file": "terminal.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/terminal/materialicons/24px.svg",
+      "sha256": "12aab7dac3adad1b0bce66a65752eb97459716b41ece5f2dd8591590583acc18"
+    },
+    {
+      "name": "terrain",
+      "category": "maps",
+      "file": "terrain.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/maps/terrain/materialicons/24px.svg",
+      "sha256": "a9b87b333cde655257e6d13f16ba6cbb0d23b7d626fd83c60c1528006cf66fb8"
+    },
+    {
+      "name": "text_fields",
+      "category": "editor",
+      "file": "text_fields.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/editor/text_fields/materialicons/24px.svg",
+      "sha256": "67f06b2e1ca0f7b398c238e62342577122889e5e1ff4aa6d5e7ff7ed88f72361"
+    },
+    {
+      "name": "texture",
+      "category": "image",
+      "file": "texture.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/texture/materialicons/24px.svg",
+      "sha256": "b95e1516a605956627b2bd2572ca7b783681e7dbd6cb30fc77824ba57fcebe06"
+    },
+    {
+      "name": "thermostat",
+      "category": "device",
+      "file": "thermostat.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/device/thermostat/materialicons/24px.svg",
+      "sha256": "245cdae75568702ff654a8e6bf9831d5004d9111c101bdedbda9882adacc94fc"
+    },
+    {
+      "name": "timeline",
+      "category": "action",
+      "file": "timeline.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/timeline/materialicons/24px.svg",
+      "sha256": "be433466d00efe33e05f6a125739146b2f65b59b9629c2c03eac39b967c344b5"
+    },
+    {
+      "name": "tune",
+      "category": "image",
+      "file": "tune.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/image/tune/materialicons/24px.svg",
+      "sha256": "9505432ac66c71102ee0d0786caf563aecb2d25851e6c39ea03c8e79e554c6c8"
+    },
+    {
+      "name": "upload",
+      "category": "file",
+      "file": "upload.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/file/upload/materialicons/24px.svg",
+      "sha256": "2529deb1ba60557629195824f7b4987603b6625571ad5b863afc3a59bcc7b6a8"
+    },
+    {
+      "name": "verified",
+      "category": "action",
+      "file": "verified.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/verified/materialicons/24px.svg",
+      "sha256": "fa635aea5d7598e3d119b72d39f85c83678ca23b5ea34af939c6dedbb07981dd"
+    },
+    {
+      "name": "video_library",
+      "category": "av",
+      "file": "video_library.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/video_library/materialicons/24px.svg",
+      "sha256": "0a12cc49709b8cc83343400a0b880ba43e607828e4c152826b41a41fd42fdecc"
+    },
+    {
+      "name": "videogame_asset",
+      "category": "hardware",
+      "file": "videogame_asset.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/hardware/videogame_asset/materialicons/24px.svg",
+      "sha256": "2c70adac0c7e7f81b0477c04f02f33388a6a3f29f5f7c76ebf2433a1e74197c8"
+    },
+    {
+      "name": "visibility",
+      "category": "action",
+      "file": "visibility.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/action/visibility/materialicons/24px.svg",
+      "sha256": "c95003a018f3776b3107d3a70057e18e7e1f1810bbcbadd32eebb04238c75bbf"
+    },
+    {
+      "name": "volume_up",
+      "category": "av",
+      "file": "volume_up.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/av/volume_up/materialicons/24px.svg",
+      "sha256": "0042b73f6a3a8ea2f61fdf0b54c0d4e9281b3c20a18fd94aa5bcd54b16fd7f88"
+    },
+    {
+      "name": "warning",
+      "category": "alert",
+      "file": "warning.svg",
+      "source": "https://raw.githubusercontent.com/google/material-design-icons/10ecc14790612ca8fd164e3f4ffe9c16fc50d5b7/src/alert/warning/materialicons/24px.svg",
+      "sha256": "a9706960208156a1de89bbfca8abeffa8771ba9332fcb9605e277bfd8b4eb3b8"
+    }
+  ]
+}
