@@ -24,13 +24,16 @@ try {
       ".jpg": "image/jpeg",
       ".jpeg": "image/jpeg",
       ".webp": "image/webp",
+      ".mp4": "video/mp4",
+      ".webm": "video/webm",
     }[path.extname(file).toLowerCase()];
     if (!type)
       throw new Error(
-        `${file}: use PNG, JPEG or WebP. Import simple SVG in the editor to rasterise it.`,
+        `${file}: use PNG, JPEG, WebP, MP4 or WebM. Import simple SVG in the editor to rasterise it.`,
       );
-    if (fs.statSync(file).size > 10000000)
-      throw new Error(`${file}: exceeds 10 MB.`);
+    const maxBytes = type.startsWith("video/") ? 100000000 : 10000000;
+    if (fs.statSync(file).size > maxBytes)
+      throw new Error(`${file}: exceeds ${maxBytes / 1000000} MB.`);
     const b = fs.readFileSync(file);
     if (
       (type === "image/png" &&
@@ -39,7 +42,9 @@ try {
         b.subarray(0, 3).toString("hex") !== "ffd8ff") ||
       (type === "image/webp" &&
         (b.subarray(0, 4).toString() !== "RIFF" ||
-          b.subarray(8, 12).toString() !== "WEBP"))
+          b.subarray(8, 12).toString() !== "WEBP")) ||
+      (type === "video/webm" && b.subarray(0, 4).toString("hex") !== "1a45dfa3") ||
+      (type === "video/mp4" && b.subarray(4, 8).toString() !== "ftyp")
     )
       throw new Error(`${file}: file signature does not match extension.`);
     p.assets[id] = {

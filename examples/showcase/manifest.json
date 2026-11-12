@@ -1,0 +1,553 @@
+[
+  {
+    "key": "technology",
+    "title": "LUMEN / The city wakes",
+    "logline": "At dawn, a sleeping processor hears the first signal of a city and transforms isolated sensors into a living network.",
+    "beats": [
+      "A suspended exploded chip descends into alignment. Fine cyan pins and transparent top layer catch reflected light; dust drifts behind the headline. A slow camera arc reveals the layered construction.",
+      "Cut from the assembled core to three wide cards: SENSE, DECIDE, RESPOND. Connectors draw left to right, travelling particles continue the signal and an original ECG-like path writes beneath the architecture.",
+      "The concept network comes online over a subtle synthetic moving plate. A reflective knot sits inside a glass orbital ring. A 0-100% illustrative counter and four-bar progression resolve, then hold."
+    ],
+    "direction": "Premium technical editorial: midnight navy, ice-blue machined layers, restrained mint signal accents. Use spacious Swiss-style typography, thin schematic lines and reflected hero geometry; no cluttered dashboard wallpaper.",
+    "physics": "Use standard hard-surface boxes, a transparent glass top plate, reflective liquid-metal knot, torus glass refraction, soft procedural environment light and a single ground mirror. Keep shader amplitude subtle so the structure remains legible.",
+    "checklist": [
+      "Actual Material memory icon and Lucide cpu/radio/brain-circuit/zap glyphs.",
+      "Root linked connectors with six travelling particles, editable wave path.",
+      "Grouped caption card, text, rounded rectangles, circle particles, embedded video, counter and chart.",
+      "Physical glass/metal, procedural geometry, object tracks, camera tracks and planar mirror."
+    ],
+    "sceneIds": [
+      "technology-awakening",
+      "technology-routing",
+      "technology-launch"
+    ],
+    "illustrations": [
+      {
+        "scene": "technology-awakening",
+        "file": "undraw_starry-window_yiga.svg",
+        "x": 600,
+        "y": 240,
+        "width": 300,
+        "height": 530,
+        "opacity": 0.12,
+        "layer": "back",
+        "index": 0
+      },
+      {
+        "scene": "technology-awakening",
+        "file": "undraw_morning-work_v5jo.svg",
+        "x": 1080,
+        "y": 60,
+        "width": 370,
+        "height": 143,
+        "start": 0.9,
+        "layer": "front",
+        "index": 37
+      },
+      {
+        "scene": "technology-awakening",
+        "file": "undraw_notify_drs8.svg",
+        "x": 1300,
+        "y": 470,
+        "width": 220,
+        "height": 290,
+        "start": 2.2,
+        "motion": "sway",
+        "enter": "scale",
+        "layer": "front",
+        "index": 37
+      },
+      {
+        "scene": "technology-routing",
+        "file": "undraw_agentic-network_02v5.svg",
+        "x": 330,
+        "y": 240,
+        "width": 940,
+        "height": 540,
+        "opacity": 0.13,
+        "layer": "back",
+        "index": 0
+      },
+      {
+        "scene": "technology-routing",
+        "file": "undraw_connect-the-dots_4p4i.svg",
+        "x": 1230,
+        "y": 60,
+        "width": 220,
+        "height": 152,
+        "start": 1.2,
+        "layer": "front",
+        "index": 33
+      },
+      {
+        "scene": "technology-launch",
+        "file": "undraw_deploy-globally_2k9s.svg",
+        "x": 760,
+        "y": 220,
+        "width": 780,
+        "height": 540,
+        "opacity": 0.22,
+        "layer": "back",
+        "index": 2
+      },
+      {
+        "scene": "technology-launch",
+        "file": "undraw_around-the-world_1p8h.svg",
+        "x": 570,
+        "y": 520,
+        "width": 300,
+        "height": 250,
+        "start": 1.8,
+        "layer": "front",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "key": "scenery",
+    "title": "AER / The valley that remembers",
+    "logline": "A paper bird follows the first light across a quiet valley and discovers an observatory floating above a luminous lake.",
+    "beats": [
+      "Establish three layered mountain silhouettes, a pale sun and distant bird marks. The far ridge shifts 20px while the closer ridge shifts 30px oppositely: depth comes from measured parallax, not a random zoom. The title occupies sky, not the mountains.",
+      "A warmer sun settles above the lake. A small original paper-bird path travels on a curved route; a fine golden trail writes behind it. Low-opacity seeded gas creates mist while a separate water viewport ripples across the lower composition.",
+      "The camera reveals a cream circular platform, teal glass dome, gold orbital ring and beacon. Stars drift behind; glass and a horizontal mirror catch light. A left-aligned two-line statement resolves beside the artifact."
+    ],
+    "direction": "Poetic illustrated travel film. Deep teal atmosphere, warm paper-gold sunrise, mint lake light. Prioritize a layered graphic landscape over photorealism. Keep mountain silhouettes clean; do not put text over busy wave detail.",
+    "physics": "Lake waves are deterministic vertex deformation on a horizontal water plane. Mist is a low-opacity seeded shader proxy, not volumetric simulation. The observatory uses cylinder/sphere/torus/cone geometry, glass transmission and one mirror pass; the bird follows authored keyframes rather than aerodynamics.",
+    "checklist": [
+      "Original landscape SVG paths with near/far parallax.",
+      "Circle sun, drifting firefly particles, authored paper-bird path and curved trail.",
+      "Standalone gas atmosphere and shared-scene water material.",
+      "Multi-part procedural observatory, glass dome, camera approach and mirror."
+    ],
+    "sceneIds": [
+      "scenery-dawn",
+      "scenery-crossing",
+      "scenery-observatory"
+    ],
+    "illustrations": [
+      {
+        "scene": "scenery-dawn",
+        "file": "undraw_wind-turbines_sq2c.svg",
+        "x": 820,
+        "y": 290,
+        "width": 230,
+        "height": 190,
+        "opacity": 0.45,
+        "layer": "mid",
+        "index": 1,
+        "distant": true,
+        "start": 0.6
+      },
+      {
+        "scene": "scenery-dawn",
+        "file": "undraw_autumn-walk_x17u.svg",
+        "x": 1150,
+        "y": 440,
+        "width": 370,
+        "height": 330,
+        "start": 1,
+        "layer": "front",
+        "index": 37
+      },
+      {
+        "scene": "scenery-crossing",
+        "file": "undraw_travel-destination_d2a9.svg",
+        "x": 90,
+        "y": 400,
+        "width": 360,
+        "height": 140,
+        "opacity": 0.55,
+        "layer": "mid",
+        "index": 14,
+        "distant": true,
+        "start": 1.2
+      },
+      {
+        "scene": "scenery-crossing",
+        "file": "undraw_exploring_d1vd.svg",
+        "x": 1200,
+        "y": 470,
+        "width": 330,
+        "height": 300,
+        "start": 2.4,
+        "layer": "front",
+        "index": 18
+      },
+      {
+        "scene": "scenery-observatory",
+        "file": "undraw_finding-the-way_qp1z.svg",
+        "x": 540,
+        "y": 470,
+        "width": 170,
+        "height": 300,
+        "start": 1.2,
+        "layer": "front",
+        "index": 42
+      },
+      {
+        "scene": "scenery-observatory",
+        "file": "undraw_travel-mode_103y.svg",
+        "x": 1350,
+        "y": 520,
+        "width": 180,
+        "height": 250,
+        "start": 2.2,
+        "enter": "slide",
+        "layer": "front",
+        "index": 42
+      }
+    ]
+  },
+  {
+    "key": "food",
+    "title": "THE LITTLE TABLE / Golden-hour skillet",
+    "logline": "Mira returns from an imagined evening market with one small basket and turns it into a warm tomato-chickpea skillet for a friend.",
+    "beats": [
+      "Introduce the basket ingredients as glossy but illustrated procedural produce. Three staggered recipe cards establish cooked chickpeas, tomatoes, olive oil, garlic, lemon and herbs; state 2 servings without inventing health claims.",
+      "A stylized cream bowl/pan assembles from flattened sphere and torus geometry. Tomato/chickpea pieces descend on authored easeOut trajectories; herb shapes settle on top. Warm seeded steam lifts above, without obscuring recipe steps.",
+      "Present the completed dish with a slower overhead camera angle. A restrained warm halo frames the plate. The left column reveals finish instructions: lemon, herbs, share while warm. An original supplied image mark closes the editorial recipe."
+    ],
+    "direction": "Warm cookbook editorial. Cocoa background, terracotta-red produce, golden oil, pale ceramic, sage herbs. Macro-inspired framing with ample space, tactile shadows and one readable action per recipe card; never render fake food photography.",
+    "physics": "Food geometry is a deliberately stylized composition of spheres, a torus rim, cone stem and cylinder tool. Ingredient drops are keyframed, not collision simulation. Steam uses the gas shader. Physical lighting and ceramic roughness create depth; no actual heat transfer or cooking simulation is implied.",
+    "checklist": [
+      "Grouped ingredient and process cards with real Lucide salad/cooking-pot/leaf/flame/timer glyphs.",
+      "Procedural ingredients, shallow bowl, rim, garnish and staged falling motion.",
+      "Gas steam with fixed seed, cast shadows and warm environment reflections.",
+      "Editable recipe typography, halo circle and original supplied PNG seal."
+    ],
+    "sceneIds": [
+      "food-market",
+      "food-skillet",
+      "food-table"
+    ],
+    "illustrations": [
+      {
+        "scene": "food-market",
+        "file": "undraw_garden-harvest_r6yu.svg",
+        "x": 640,
+        "y": 230,
+        "width": 880,
+        "height": 500,
+        "opacity": 0.16,
+        "layer": "back",
+        "index": 0
+      },
+      {
+        "scene": "food-market",
+        "file": "undraw_food-truck_my6o.svg",
+        "x": 1260,
+        "y": 610,
+        "width": 270,
+        "height": 160,
+        "start": 1.8,
+        "enter": "slide",
+        "layer": "front",
+        "index": 34
+      },
+      {
+        "scene": "food-skillet",
+        "file": "undraw_plants_md5c.svg",
+        "x": 545,
+        "y": 610,
+        "width": 260,
+        "height": 150,
+        "start": 1.2,
+        "motion": "sway",
+        "layer": "front",
+        "index": 17
+      },
+      {
+        "scene": "food-skillet",
+        "file": "undraw_hot-cocoa_64a7.svg",
+        "x": 1330,
+        "y": 520,
+        "width": 200,
+        "height": 250,
+        "start": 2.2,
+        "layer": "front",
+        "index": 17
+      },
+      {
+        "scene": "food-table",
+        "file": "undraw_breakfast-together_vev0.svg",
+        "x": 600,
+        "y": 560,
+        "width": 330,
+        "height": 210,
+        "start": 1.4,
+        "layer": "front",
+        "index": 5
+      },
+      {
+        "scene": "food-table",
+        "file": "undraw_special-occasion_ffh6.svg",
+        "x": 1350,
+        "y": 560,
+        "width": 180,
+        "height": 210,
+        "start": 2.4,
+        "layer": "front",
+        "index": 5
+      }
+    ]
+  },
+  {
+    "key": "meeting",
+    "title": "ROOM 04 / One clear decision",
+    "logline": "Four fictional teammates enter a meeting with separate ideas and leave with one visible decision, an owner and a next step.",
+    "beats": [
+      "Reveal four abstract head-and-body figures around a transparent table. Differently coloured teammates share a camera frame, not separate fake video-call feeds. Left cards give each discipline a concrete question.",
+      "Replace the meeting room with a three-part decision map: question, constraint, decision. Step connectors draw first, cards appear in order and travelling dots imply thought moving toward action. Preserve legible long-form labels in 80px-safe framing.",
+      "A glass decision tile and a reflective ring become a quiet emblem of alignment. Three final cards state the decision, owner and learning goal. Stop the camera at 4.5s and hold the final hand-off through 6s."
+    ],
+    "direction": "Refined strategy presentation, not a busy SaaS dashboard. Ink-violet space, lavender emphasis, mint completion. Use consistent card sizes, large readable editorial titles and a thin shared progress rail.",
+    "physics": "Abstract people use sphere/cylinder primitives. The table and final decision tile use transmission glass; the closing ring uses restrained liquidMetal reflection and a single mirror. All spatial motion is keyframed. No emotion recognition, real attendee analysis or real meeting recording is implied.",
+    "checklist": [
+      "Eight-part procedural team plus glass table with shared 3D lighting.",
+      "Groups, text and rectangular decision cards; root step connectors and travelling particles.",
+      "Real Lucide team/question/controls/check/owner/target symbols.",
+      "Glass tile, reflective ring, camera orbit, cast shadows and mirror."
+    ],
+    "sceneIds": [
+      "meeting-arrival",
+      "meeting-decision",
+      "meeting-action"
+    ],
+    "illustrations": [
+      {
+        "scene": "meeting-arrival",
+        "file": "undraw_meet-the-team_fau8.svg",
+        "x": 1120,
+        "y": 60,
+        "width": 330,
+        "height": 157,
+        "start": 0.8,
+        "layer": "front",
+        "index": 36
+      },
+      {
+        "scene": "meeting-arrival",
+        "file": "undraw_sharing-ideas_toje.svg",
+        "x": 540,
+        "y": 540,
+        "width": 270,
+        "height": 230,
+        "start": 1.9,
+        "layer": "front",
+        "index": 36
+      },
+      {
+        "scene": "meeting-decision",
+        "file": "undraw_decision-point_yhu3.svg",
+        "x": 1200,
+        "y": 70,
+        "width": 250,
+        "height": 240,
+        "start": 1.6,
+        "layer": "front",
+        "index": 14
+      },
+      {
+        "scene": "meeting-decision",
+        "file": "undraw_sorting-thoughts_b0kt.svg",
+        "x": 600,
+        "y": 625,
+        "width": 400,
+        "height": 150,
+        "start": 2.4,
+        "layer": "front",
+        "index": 14
+      },
+      {
+        "scene": "meeting-action",
+        "file": "undraw_handshake-deal_nwk6.svg",
+        "x": 1250,
+        "y": 60,
+        "width": 200,
+        "height": 148,
+        "start": 1,
+        "enter": "scale",
+        "motion": "none",
+        "layer": "front",
+        "index": 16
+      },
+      {
+        "scene": "meeting-action",
+        "file": "undraw_next-task_jtbr.svg",
+        "x": 540,
+        "y": 560,
+        "width": 300,
+        "height": 210,
+        "start": 2,
+        "layer": "front",
+        "index": 16
+      },
+      {
+        "scene": "meeting-action",
+        "file": "undraw_shared-goals_ijlg.svg",
+        "x": 1150,
+        "y": 560,
+        "width": 380,
+        "height": 210,
+        "start": 1.2,
+        "layer": "front",
+        "index": 16
+      }
+    ]
+  },
+  {
+    "key": "social",
+    "title": "THE LONG TABLE / A small kindness travels",
+    "logline": "A handwritten invitation in an imaginary neighborhood travels from one doorway to the next until strangers build a shared evening table.",
+    "beats": [
+      "Show a warmly lit note floating over a geometric neighborhood silhouette. The paper rotates slowly into place, with a large dark invitation headline. Keep the handwritten-story feeling without requiring external fonts.",
+      "The invitation moves into a wide social graph of four contrasting circular nodes. Draw connections in three phases; each node carries a real local symbol for care, conversation, growth or home. Use measured travelling particles and meaningful labels.",
+      "Reveal a stylized shared table and six abstract neighbors arriving at staggered times. A small refractive lantern marks the centre, warm particles suggest evening, and the final line holds: There is room for one more."
+    ],
+    "direction": "Warm community editorial. Forest-green ink, cream paper, honey-gold light and fresh mint. Use human-scale objects, gentle easing and generous breathing room; no fake platform metrics, notification spam or political advocacy.",
+    "physics": "Paper movement and seating arrivals are authored transforms, not rigid-body simulation. A shared 3D scene supplies physical light, a glass lantern and cast shadows. Connection dots and warm motes are deterministic visual metaphors, not a real social-network simulation.",
+    "checklist": [
+      "Original vector skyline, rotating invitation card and oversized editable text.",
+      "Circle nodes, Lucide heart-handshake/message-circle/sprout/house glyphs and linked Bezier paths.",
+      "Multi-part 3D table/people/lantern, group cards and warm particle atmosphere.",
+      "Fiction labels and a final hold preserve narrative clarity without fabricated impact claims."
+    ],
+    "sceneIds": [
+      "social-invitation",
+      "social-ripple",
+      "social-table"
+    ],
+    "illustrations": [
+      {
+        "scene": "social-invitation",
+        "file": "undraw_message-sent_iyz6.svg",
+        "x": 1190,
+        "y": 60,
+        "width": 200,
+        "height": 170,
+        "start": 2.4,
+        "motion": "drift",
+        "drift": 60,
+        "enter": "slide",
+        "layer": "front",
+        "index": 36
+      },
+      {
+        "scene": "social-invitation",
+        "file": "undraw_walking-the-dog_cjob.svg",
+        "x": 470,
+        "y": 580,
+        "width": 220,
+        "height": 190,
+        "start": 1.6,
+        "layer": "front",
+        "index": 36
+      },
+      {
+        "scene": "social-invitation",
+        "file": "undraw_mail-sent_dagx.svg",
+        "x": 1320,
+        "y": 500,
+        "width": 210,
+        "height": 230,
+        "start": 1.5,
+        "layer": "front",
+        "index": 36
+      },
+      {
+        "scene": "social-ripple",
+        "file": "undraw_group-chat_nze2.svg",
+        "x": 1200,
+        "y": 60,
+        "width": 250,
+        "height": 164,
+        "start": 1.8,
+        "layer": "front",
+        "index": 40
+      },
+      {
+        "scene": "social-ripple",
+        "file": "undraw_love-note_c4fs.svg",
+        "x": 160,
+        "y": 640,
+        "width": 170,
+        "height": 135,
+        "start": 1,
+        "motion": "sway",
+        "layer": "front",
+        "index": 40
+      },
+      {
+        "scene": "social-ripple",
+        "file": "undraw_casual-chat_4byz.svg",
+        "x": 500,
+        "y": 640,
+        "width": 170,
+        "height": 135,
+        "start": 1.6,
+        "motion": "sway",
+        "layer": "front",
+        "index": 40
+      },
+      {
+        "scene": "social-ripple",
+        "file": "undraw_order-delivered_gy61.svg",
+        "x": 840,
+        "y": 640,
+        "width": 170,
+        "height": 135,
+        "start": 2.2,
+        "motion": "sway",
+        "layer": "front",
+        "index": 40
+      },
+      {
+        "scene": "social-ripple",
+        "file": "undraw_sweet-home_b054.svg",
+        "x": 1180,
+        "y": 640,
+        "width": 170,
+        "height": 135,
+        "start": 2.8,
+        "motion": "sway",
+        "layer": "front",
+        "index": 40
+      },
+      {
+        "scene": "social-table",
+        "file": "undraw_together_gsr6.svg",
+        "x": 1250,
+        "y": 60,
+        "width": 200,
+        "height": 156,
+        "start": 1.4,
+        "layer": "front",
+        "index": 49
+      },
+      {
+        "scene": "social-table",
+        "file": "undraw_dancing_lvv0.svg",
+        "x": 590,
+        "y": 540,
+        "width": 220,
+        "height": 230,
+        "start": 2.4,
+        "motion": "sway",
+        "layer": "front",
+        "index": 49
+      },
+      {
+        "scene": "social-table",
+        "file": "undraw_group-selfie_uih0.svg",
+        "x": 1370,
+        "y": 480,
+        "width": 160,
+        "height": 290,
+        "start": 1.8,
+        "layer": "front",
+        "index": 49
+      }
+    ]
+  }
+]

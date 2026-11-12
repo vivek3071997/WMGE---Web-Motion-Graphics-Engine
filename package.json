@@ -1,14 +1,22 @@
 {
   "name": "motion-forge-studio",
-  "version": "1.0.0",
-  "description": "An offline-first SVG motion graphics editor with portable AI agent guidelines.",
+  "version": "1.1.0",
+  "description": "An offline-first SVG and WebGL motion graphics editor with portable AI agent guidelines.",
   "private": true,
   "license": "MIT",
   "main": "src/engine.js",
   "scripts": {
     "start": "node scripts/serve.cjs",
-    "test": "node --test tests/engine.test.cjs",
+    "index:illustrations": "node scripts/index-local-illustrations.cjs",
+    "import:illustrations": "node scripts/import-local-illustrations.cjs",
+    "test": "node --test tests/engine.test.cjs tests/export.test.cjs tests/three-renderer.test.cjs tests/serve.test.cjs tests/local-library.test.cjs tests/director.test.cjs tests/demos.test.cjs",
     "test:browser": "node tests/browser.cjs",
+    "test:advanced": "node tests/advanced-browser.cjs",
+    "test:catalog": "node tests/catalog-browser.cjs",
+    "build:showcase": "node scripts/build-showcase.cjs",
+    "test:showcase": "node scripts/preview-showcase.cjs",
+    "test:showcase:gallery": "node tests/showcase-browser.cjs",
+    "build:vendor": "node scripts/build-vendor.cjs",
     "validate": "node scripts/validate.cjs",
     "render": "node scripts/render.cjs"
   },
@@ -16,6 +24,8 @@
     "node": ">=20"
   },
   "devDependencies": {
+    "lucide-static": "0.468.0",
+    "three": "0.160.1",
     "playwright": "1.62.1"
   },
   "repository": {

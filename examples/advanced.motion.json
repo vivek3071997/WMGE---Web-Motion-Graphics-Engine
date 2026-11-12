@@ -1,0 +1,427 @@
+{
+  "version": 1,
+  "name": "Advanced material studies",
+  "width": 1600,
+  "height": 900,
+  "fps": 30,
+  "theme": {
+    "background": "#0b1020",
+    "surface": "#182237",
+    "accent": "#8d9bff",
+    "secondary": "#56e0cf",
+    "text": "#f4f6ff",
+    "muted": "#91a0b8",
+    "line": "#34445e"
+  },
+  "assets": {},
+  "scenes": [
+    {
+      "id": "study-0",
+      "name": "Glass & mirror",
+      "duration": 8,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface"
+      },
+      "layers": [
+        {
+          "id": "stage3d",
+          "type": "scene3d",
+          "name": "Editable 3D stage",
+          "x": 80,
+          "y": 135,
+          "width": 1440,
+          "height": 720,
+          "enter": "fade",
+          "enterDuration": 0.8,
+          "cameraDistance": 6,
+          "cameraAzimuth": 20,
+          "cameraElevation": 18,
+          "lightIntensity": 4,
+          "objects": [
+            {
+              "id": "glass",
+              "geometry": "knot",
+              "material": "glass",
+              "color": "$secondary",
+              "x": -0.85,
+              "scaleX": 0.8,
+              "scaleY": 0.8,
+              "scaleZ": 0.8,
+              "roughness": 0.06,
+              "transmission": 0.95,
+              "ior": 1.5,
+              "speed": 0.3
+            },
+            {
+              "id": "metal",
+              "geometry": "sphere",
+              "material": "liquidMetal",
+              "color": "$accent",
+              "x": 1.2,
+              "y": -0.4,
+              "scaleX": 0.65,
+              "scaleY": 0.65,
+              "scaleZ": 0.65,
+              "amplitude": 0.12,
+              "speed": 0.5
+            }
+          ],
+          "mirror": true
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "text": "Glass & mirror",
+          "x": 96,
+          "y": 54,
+          "width": 1408,
+          "height": 108,
+          "fontSize": 63,
+          "fill": "$text",
+          "enter": "rise",
+          "enterDuration": 0.8,
+          "shadowBlur": 14,
+          "shadowY": 6,
+          "shadowColor": "#00000080"
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "text": "Procedural objects / physical materials / one planar reflection",
+          "x": 96,
+          "y": 810,
+          "width": 1408,
+          "height": 54,
+          "fontSize": 24,
+          "fill": "$muted",
+          "enter": "fade"
+        }
+      ]
+    },
+    {
+      "id": "study-1",
+      "name": "Liquid metal",
+      "duration": 8,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface"
+      },
+      "layers": [
+        {
+          "id": "stage3d",
+          "type": "scene3d",
+          "name": "Editable 3D stage",
+          "x": 80,
+          "y": 135,
+          "width": 1440,
+          "height": 720,
+          "enter": "fade",
+          "enterDuration": 0.8,
+          "cameraDistance": 6,
+          "cameraAzimuth": 20,
+          "cameraElevation": 18,
+          "lightIntensity": 4,
+          "objects": [
+            {
+              "id": "metal",
+              "geometry": "sphere",
+              "material": "liquidMetal",
+              "color": "$accent",
+              "amplitude": 0.25,
+              "frequency": 3,
+              "speed": 0.6,
+              "tracks": [
+                {
+                  "property": "rotationY",
+                  "loop": true,
+                  "keyframes": [
+                    {
+                      "time": 0,
+                      "value": 0
+                    },
+                    {
+                      "time": 8,
+                      "value": 360,
+                      "easing": "linear"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "text": "Liquid metal",
+          "x": 96,
+          "y": 54,
+          "width": 1408,
+          "height": 108,
+          "fontSize": 63,
+          "fill": "$text",
+          "enter": "rise",
+          "enterDuration": 0.8,
+          "shadowBlur": 14,
+          "shadowY": 6,
+          "shadowColor": "#00000080"
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "text": "Editable procedural animation / deterministic timeline",
+          "x": 96,
+          "y": 810,
+          "width": 1408,
+          "height": 54,
+          "fontSize": 24,
+          "fill": "$muted",
+          "enter": "fade"
+        }
+      ]
+    },
+    {
+      "id": "study-2",
+      "name": "Water surface",
+      "duration": 8,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface"
+      },
+      "layers": [
+        {
+          "id": "stage3d",
+          "type": "scene3d",
+          "name": "Editable 3D stage",
+          "x": 80,
+          "y": 135,
+          "width": 1440,
+          "height": 720,
+          "enter": "fade",
+          "enterDuration": 0.8,
+          "cameraDistance": 6,
+          "cameraAzimuth": 0,
+          "cameraElevation": 40,
+          "lightIntensity": 4,
+          "objects": [
+            {
+              "id": "water",
+              "geometry": "plane",
+              "material": "water",
+              "color": "$secondary",
+              "scaleX": 2.4,
+              "scaleY": 2.4,
+              "rotationX": -90,
+              "amplitude": 0.2,
+              "frequency": 6
+            }
+          ],
+          "ground": false
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "text": "Water surface",
+          "x": 96,
+          "y": 54,
+          "width": 1408,
+          "height": 108,
+          "fontSize": 63,
+          "fill": "$text",
+          "enter": "rise",
+          "enterDuration": 0.8,
+          "shadowBlur": 14,
+          "shadowY": 6,
+          "shadowColor": "#00000080"
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "text": "Editable procedural animation / deterministic timeline",
+          "x": 96,
+          "y": 810,
+          "width": 1408,
+          "height": 54,
+          "fontSize": 24,
+          "fill": "$muted",
+          "enter": "fade"
+        }
+      ]
+    },
+    {
+      "id": "study-3",
+      "name": "Atmospheric gas",
+      "duration": 8,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface"
+      },
+      "layers": [
+        {
+          "id": "stage3d",
+          "type": "scene3d",
+          "name": "Editable 3D stage",
+          "x": 80,
+          "y": 135,
+          "width": 1440,
+          "height": 720,
+          "enter": "fade",
+          "enterDuration": 0.8,
+          "cameraDistance": 6,
+          "cameraAzimuth": 0,
+          "cameraElevation": 0,
+          "lightIntensity": 4,
+          "objects": [
+            {
+              "id": "gas",
+              "geometry": "sphere",
+              "material": "gas",
+              "color": "$secondary",
+              "scaleX": 2.4,
+              "scaleY": 2,
+              "amplitude": 0.3,
+              "seed": 42
+            }
+          ],
+          "ground": false
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "text": "Atmospheric gas",
+          "x": 96,
+          "y": 54,
+          "width": 1408,
+          "height": 108,
+          "fontSize": 63,
+          "fill": "$text",
+          "enter": "rise",
+          "enterDuration": 0.8,
+          "shadowBlur": 14,
+          "shadowY": 6,
+          "shadowColor": "#00000080"
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "text": "Editable procedural animation / deterministic timeline",
+          "x": 96,
+          "y": 810,
+          "width": 1408,
+          "height": 54,
+          "fontSize": 24,
+          "fill": "$muted",
+          "enter": "fade"
+        }
+      ]
+    },
+    {
+      "id": "study-4",
+      "name": "Animated shadows",
+      "duration": 8,
+      "background": {
+        "type": "radial",
+        "color": "$background",
+        "color2": "$surface"
+      },
+      "layers": [
+        {
+          "id": "stage3d",
+          "type": "scene3d",
+          "name": "Editable 3D stage",
+          "x": 80,
+          "y": 135,
+          "width": 1440,
+          "height": 720,
+          "enter": "fade",
+          "enterDuration": 0.8,
+          "cameraDistance": 6,
+          "cameraAzimuth": 20,
+          "cameraElevation": 18,
+          "lightIntensity": 4,
+          "objects": [
+            {
+              "id": "sculpture",
+              "geometry": "torus",
+              "material": "standard",
+              "color": "$accent",
+              "roughness": 0.2,
+              "speed": 0.3
+            }
+          ]
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "text": "Animated shadows",
+          "x": 96,
+          "y": 54,
+          "width": 1408,
+          "height": 108,
+          "fontSize": 63,
+          "fill": "$text",
+          "enter": "rise",
+          "enterDuration": 0.8,
+          "shadowBlur": 14,
+          "shadowY": 6,
+          "shadowColor": "#00000080",
+          "tracks": [
+            {
+              "property": "shadowX",
+              "loop": true,
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": -24
+                },
+                {
+                  "time": 4,
+                  "value": 24
+                },
+                {
+                  "time": 8,
+                  "value": -24
+                }
+              ]
+            },
+            {
+              "property": "shadowBlur",
+              "loop": true,
+              "keyframes": [
+                {
+                  "time": 0,
+                  "value": 8
+                },
+                {
+                  "time": 4,
+                  "value": 40
+                },
+                {
+                  "time": 8,
+                  "value": 8
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "caption",
+          "type": "text",
+          "text": "Editable procedural animation / deterministic timeline",
+          "x": 96,
+          "y": 810,
+          "width": 1408,
+          "height": 54,
+          "fontSize": 24,
+          "fill": "$muted",
+          "enter": "fade"
+        }
+      ]
+    }
+  ]
+}

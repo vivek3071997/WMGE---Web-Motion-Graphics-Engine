@@ -1,0 +1,37 @@
+:root { color-scheme: dark; font-family: Arial, Helvetica, sans-serif; background: #090c13; color: #eef1fa; }
+* { box-sizing: border-box; }
+body { margin: 0; background: radial-gradient(ellipse at 80% 0, #18213c, transparent 50%); }
+a { color: #bcc7ee; text-decoration: none; }
+a:hover { color: white; text-decoration: underline; }
+header { display: flex; justify-content: space-between; padding: 26px 5%; border-bottom: 1px solid #252b3e; font-size: 13px; gap: 20px; }
+.brand { color: #eef1fa; font-weight: 800; letter-spacing: 1px; }
+.brand span { margin-left: 14px; font-size: 10px; letter-spacing: 2px; color: #8e9dbd; }
+main { max-width: 1440px; margin: auto; padding: 68px 5% 30px; }
+.eyebrow { font-size: 11px; color: #98adeb; letter-spacing: 2px; font-weight: 700; }
+h1 { font-size: clamp(42px, 6vw, 82px); line-height: 1.04; letter-spacing: -3px; margin: 22px 0; }
+h1 span { color: #8593bd; }
+.intro { max-width: 660px; font-size: 17px; line-height: 1.7; color: #9daac5; }
+nav { display: flex; gap: 10px; flex-wrap: wrap; margin: 36px 0 20px; }
+nav button { background: #141a29; border: 1px solid #303950; border-radius: 30px; color: #9eaccb; padding: 13px 22px; cursor: pointer; font-size: 14px; }
+nav button[aria-pressed="true"] { background: #dce5ff; border-color: #dce5ff; color: #15203e; }
+.theatre { position: relative; border: 1px solid #323a50; border-radius: 12px; overflow: hidden; background: #05070c; box-shadow: 0 25px 100px #0008; }
+video { display: block; width: 100%; aspect-ratio: 16/9; }
+#playback-error { padding: 20px; color: #ffcbaf; }
+.film-info { display: grid; grid-template-columns: 1fr 250px; gap: 40px; margin: 30px 0 50px; }
+h2 { font-size: 30px; letter-spacing: -0.5px; margin: 14px 0; }
+.film-info p { color: #a1afca; line-height: 1.7; max-width: 760px; }
+.links { display: flex; gap: 12px; flex-wrap: wrap; align-content: start; font-size: 13px; }
+.links .primary { display: block; background: #263757; border: 1px solid #455b88; border-radius: 6px; padding: 12px 20px; width: 100%; text-align: center; }
+.toolbar { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+h3 { font-size: 11px; letter-spacing: 1.8px; color: #a5b1ca; }
+label { font-size: 12px; color: #8e9db8; }
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin: 18px 0 50px; }
+.shot { background: #121725; border: 1px solid #293248; border-radius: 8px; overflow: hidden; }
+.shot img { width: 100%; display: block; aspect-ratio: 16/9; }
+.shot div { padding: 16px; }
+.shot p { font-size: 13px; line-height: 1.7; color: #9aa8c2; }
+.shot button { background: none; border: 0; padding: 0; color: #bfd0ff; cursor: pointer; font-size: 12px; }
+.notes { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; padding-top: 20px; border-top: 1px solid #293248; }
+.notes p { font-size: 13px; line-height: 1.8; color: #8493ad; }
+footer { color: #60718f; font-size: 11px; padding: 40px 0 0; }
+@media (max-width: 700px) { main { padding-top: 36px; } .film-info, .shots, .notes { grid-template-columns: 1fr; } .shots { gap: 22px; } .toolbar { align-items: start; flex-direction: column; } h1 { letter-spacing: -1px; } header .brand span { display: none; } }

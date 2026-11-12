@@ -11,8 +11,15 @@
     <title>Motion Forge — Motion graphics studio</title>
     <link rel="stylesheet" href="src/styles.css" />
     <script defer src="src/icons.js"></script>
+    <script defer src="src/elements.js"></script>
     <script defer src="src/engine.js"></script>
+    <script defer src="assets/vendor/three.min.js"></script>
+    <script defer src="src/three-renderer.js"></script>
+    <script defer src="src/compositor.js"></script>
+    <script defer src="src/video-export.js"></script>
+    <script defer src="src/presets.js"></script>
     <script defer src="src/examples.js"></script>
+    <script defer src="src/director.js"></script>
     <script defer src="src/app.js"></script>
   </head>
   <body>
@@ -21,7 +28,7 @@
         <span class="brand-mark">M<span>F</span></span>
         <div>
           <strong>MOTION FORGE</strong
-          ><small>LOCAL MOTION STUDIO <i>1.0</i></small>
+          ><small>LOCAL MOTION STUDIO <i>1.1</i></small>
         </div>
       </div>
       <div class="project-heading">
@@ -34,6 +41,7 @@
       <div class="top-actions">
         <button id="undo" title="Undo (⌘/Ctrl Z)">↶</button
         ><button id="redo" title="Redo (⌘/Ctrl Shift Z)">↷</button
+        ><a id="demos-open" class="button demos-link" href="examples/demos/" title="Browse ready-made demo films">▶ Demos</a
         ><button id="ai-open" class="subtle">✦ AI workspace</button
         ><button id="export-open" class="primary">
           Export <span>↗</span>
@@ -75,7 +83,14 @@
             ><button data-add="counter"># <span>Counter</span></button
             ><button data-add="group">▧ <span>Group</span></button
             ><button data-add="path">⌁ <span>Path</span></button>
+            <button data-add="scene3d">3D <span>3D scene</span></button>
+            <button data-effect="gas">~ <span>Gas</span></button>
+            <button data-effect="water">~ <span>Water</span></button>
+            <button data-effect="liquidMetal">~ <span>Metal</span></button>
+            <button data-effect="glass">O <span>Glass</span></button>
           </div>
+          <label>Advanced starter<select id="advanced-select"></select></label>
+          <button id="advanced-add">Add advanced scene</button>
           <div class="section-row">
             <h3>SCENE LAYERS</h3>
             <span id="layer-count"></span>
@@ -92,9 +107,27 @@
           </div>
         </section>
         <section id="assets-panel" hidden>
+          <label
+            >Image source<select id="image-source">
+              <option value="own">My own / other</option>
+              <option value="undraw">unDraw illustration (undraw.co)</option>
+            </select></label
+          >
+          <div id="undraw-options" hidden>
+            <label class="check"
+              ><input id="undraw-recolor" type="checkbox" checked /> Recolour
+              unDraw accent #6C63FF to theme accent</label
+            >
+            <p class="micro">
+              Download illustrations yourself from
+              <a href="https://undraw.co/illustrations" target="_blank" rel="noopener">undraw.co</a>
+              and upload the SVGs here. Each asset keeps an unDraw credit. Motion Forge
+              never downloads or bundles unDraw files (unDraw License).
+            </p>
+          </div>
           <label class="upload-zone" for="image-upload"
             ><span>＋</span><strong>Add your images</strong
-            ><small>PNG · JPG · WebP · simple SVG</small></label
+            ><small>PNG · JPG · WebP · SVG illustrations</small></label
           ><input
             id="image-upload"
             type="file"
@@ -102,15 +135,42 @@
             multiple
             hidden
           />
+          <label class="upload-zone" for="video-upload"><strong>Add custom video</strong><small>MP4 / WebM · max 100 MB · muted</small></label>
+          <input id="video-upload" type="file" accept="video/mp4,video/webm,.mp4,.webm" hidden />
+          <div id="local-illustrations" hidden>
+            <div class="section-row">
+              <h3>LOCAL ILLUSTRATIONS</h3>
+              <span id="local-illustration-count"></span>
+            </div>
+            <select id="local-illustration-library" aria-label="Illustration library" hidden>
+              <option value="all">All libraries</option>
+              <option value="undraw">unDraw</option>
+            </select>
+            <input
+              id="local-illustration-search"
+              type="search"
+              placeholder="Search your illustrations… team, chart"
+              aria-label="Search local illustrations"
+            />
+            <div id="local-illustration-grid"></div>
+            <button id="auto-depth" class="wide" title="Match illustrations to every scene and place them in free space">
+              ✦ Auto-add illustration depth
+            </button>
+            <p class="micro">
+              Your own downloads in assets/undraw-local (git-ignored). Click to add with
+              theme recolour, credit and depth.
+            </p>
+          </div>
           <div class="section-row">
             <h3>YOUR ASSETS</h3>
             <span id="asset-count"></span>
           </div>
           <div id="asset-library"></div>
           <div class="section-row">
-            <h3>MATERIAL ICONS</h3>
+            <h3>OPEN-SOURCE ELEMENTS</h3>
             <span id="icon-count"></span>
           </div>
+          <label>Library<select id="icon-library"><option value="material">Material Icons</option><option value="lucide">Lucide (1,544 elements)</option></select></label>
           <input
             id="icon-search"
             type="search"
@@ -119,8 +179,7 @@
           />
           <div id="icon-grid"></div>
           <p class="micro">
-            Google Material Icons · Apache 2.0<br />Bundled locally. No CDN or
-            account.
+            Material Icons · Apache 2.0 / Lucide · ISC<br />Bundled locally. No CDN or account.
           </p>
         </section>
         <div class="library-bottom">
@@ -129,6 +188,8 @@
               <option value="">Choose a scene…</option>
             </select></label
           ><button id="template-add">Add template</button>
+          <a href="?demo=catalog" target="_blank" rel="noopener">Open complete example catalog</a>
+          <a href="docs/EXAMPLE_COOKBOOK.md" target="_blank" rel="noopener">Example prompts &amp; scene JSON</a>
         </div>
       </aside>
       <section class="studio">
@@ -174,7 +235,7 @@
         </div>
         <div id="timeline"></div>
         <footer class="studio-footer">
-          <span>Deterministic SVG renderer</span><span id="scene-summary"></span
+          <span>SVG + WebGL compositor</span><span id="scene-summary"></span
           ><a href="README.md" target="_blank" rel="noopener"
             >Help &amp; guide ↗</a
           >
@@ -193,32 +254,47 @@
     <dialog id="ai-dialog">
       <form method="dialog" class="dialog-head">
         <div>
-          <h2>Build with any AI</h2>
+          <h2>Smart director</h2>
           <p>
-            Copy a brief, ask your LLM for project JSON, then paste the result
-            here.
+            Describe your idea in one line. The director infers genre, pacing,
+            palette, 3D materials and illustration depth, then builds it, or
+            writes a detailed prompt for any LLM.
           </p>
         </div>
         <button aria-label="Close AI workspace">×</button>
       </form>
       <div class="dialog-body">
         <label
-          >Your creative brief<textarea
+          >Your idea<textarea
             id="ai-brief"
             rows="3"
-            placeholder="Example: Explain how a CPU talks to memory in a 12-second scene. Use cyan and orange, with labelled data paths."
+            placeholder="Example: 30s launch video for our AI code review app in cyan and orange"
           ></textarea>
         </label>
+        <div id="brief-starters" class="starter-row" aria-label="Quick starts">
+          <button data-brief="Launch video for our AI code review app in cyan and orange">Product launch</button
+          ><button data-brief="Recipe for fluffy pancakes: flour, eggs, milk, butter, maple syrup">Recipe</button
+          ><button data-brief="Quarterly team meeting: wins, roadmap, hiring, next steps">Team meeting</button
+          ><button data-brief="Instagram story celebrating 10k followers">Social milestone</button
+          ><button data-brief="Travel promo for a weekend in Kyoto with misty mornings and water reflections">Travel</button
+          ><button data-brief="Revenue grew 42% to $3.5m with 1200 new customers">Data story</button
+          ><button data-brief="Teach kids the water cycle in a light pastel style">Lesson</button
+          ><button data-brief="Explain how passwords are encrypted, with glass and liquid metal">Security</button>
+        </div>
+        <div id="director-readout" class="director-readout" aria-live="polite"></div>
         <div class="button-row">
-          <button id="copy-prompt" class="primary">
-            Copy prompt + current project</button
+          <button id="director-build" class="primary">✦ Build it for me</button
+          ><button id="director-depth">Add illustration depth</button
+          ><button id="copy-prompt">Copy smart prompt</button
           ><button id="download-prompt">Download prompt</button
+          ><label class="inline-check"
+            ><input id="prompt-draft" type="checkbox" checked /> Include director draft</label
           ><a href="agent/motion-forge/SKILL.md" target="_blank" rel="noopener"
             >Agent guidelines ↗</a
           >
         </div>
         <label
-          >Project JSON<textarea
+          >Project JSON from your LLM (a project, or {"project", "illustrations"})<textarea
             id="json-editor"
             spellcheck="false"
             rows="12"
@@ -244,7 +320,7 @@
       <form method="dialog" class="dialog-head">
         <div>
           <h2>Export your work</h2>
-          <p>Portable project, crisp frames or a browser-recorded video.</p>
+          <p>Portable projects, crisp frames and MP4 / WebM video.</p>
         </div>
         <button aria-label="Close export options">×</button>
       </form>
@@ -259,11 +335,13 @@
           <strong>PNG frame</strong
           ><span>Current frame at project resolution</span></button
         ><button id="export-video">
-          <strong>Record scene · WebM</strong
+          <strong>Record scene · video</strong
           ><span>Real-time capture, no audio. Keep this tab visible.</span>
         </button>
       </div>
       <div class="dialog-body">
+        <div class="row"><label>Video format<select id="video-format"></select></label><label>Bitrate (Mbps)<input id="video-bitrate" type="number" min="1" max="100" value="24" /></label></div>
+        <p id="video-support" class="micro"></p>
         <label
           >Recording progress<progress
             id="record-progress"
@@ -274,8 +352,9 @@
         <p class="micro">
           For precise frame-by-frame output, use the included render tool.
           Transparent backgrounds export to SVG/PNG; video uses the theme
-          background. This is a 2D engine, with no 3D simulation or audio
-          editor.
+          background. For deterministic 4K MP4/WebM use the local render
+          tool and FFmpeg. Gas, water and metal are stylized effects, not
+          fluid simulations. Source video audio is not mixed.
         </p>
       </div>
     </dialog>

@@ -4,12 +4,32 @@
     typeof module === "object" && module.exports
       ? require("./icons.js")
       : root.MotionIcons,
+    typeof module === "object" && module.exports
+      ? require("./elements.js")
+      : root.MotionElements,
   );
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.MotionForge = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (icons) {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (icons, elements) {
   "use strict";
-  const VERSION = "1.0.0";
+  const VERSION = "1.1.0";
+  const GEOMETRIES = ["box", "sphere", "torus", "knot", "cone", "cylinder", "plane"];
+  const MATERIALS = ["standard", "glass", "water", "liquidMetal", "gas"];
+  const EFFECTS = ["gas", "water", "liquidMetal", "glass"];
+  const MATERIAL_DEFAULTS = {
+    standard: { color: "#8d9bff", roughness: 0.55, metalness: 0.05, transmission: 0, ior: 1.5 },
+    glass: { color: "#d8e6ff", roughness: 0.04, metalness: 0, transmission: 0.96, ior: 1.5 },
+    water: { color: "#79d9ff", roughness: 0.08, metalness: 0.12, transmission: 0.82, ior: 1.33 },
+    liquidMetal: { color: "#c5d0df", roughness: 0.16, metalness: 0.92, transmission: 0, ior: 1.5 },
+    gas: { color: "#9da8ff", roughness: 0.48, metalness: 0, transmission: 0, ior: 1.2 },
+  };
+  const OBJECT_RANGES = {
+    x: [-50, 50], y: [-50, 50], z: [-50, 50],
+    rotationX: [-36000, 36000], rotationY: [-36000, 36000], rotationZ: [-36000, 36000],
+    scaleX: [0.01, 50], scaleY: [0.01, 50], scaleZ: [0.01, 50],
+    roughness: [0, 1], metalness: [0, 1], transmission: [0, 1],
+    ior: [1, 2.5], amplitude: [0, 1], frequency: [0.1, 20], opacity: [0, 1],
+  };
   const TYPES = [
     "text",
     "rect",
@@ -21,6 +41,10 @@
     "counter",
     "chart",
     "group",
+    "symbol",
+    "scene3d",
+    "effect",
+    "video",
   ];
   const THEMES = {
     midnight: {
@@ -91,6 +115,16 @@
     "strokeWidth",
     "radius",
     "progress",
+    "shadowBlur",
+    "shadowX",
+    "shadowY",
+    "intensity",
+    "speed",
+    "cameraDistance",
+    "cameraAzimuth",
+    "cameraElevation",
+    "fov",
+    "lightIntensity",
   ];
   const COLOR_PROPS = ["fill", "stroke"];
   const COMMON = [
@@ -116,6 +150,10 @@
     "tracks",
     "parentId",
     "hidden",
+    "shadowBlur",
+    "shadowX",
+    "shadowY",
+    "shadowColor",
   ];
   const SPECIFIC = {
     text: [
@@ -164,6 +202,10 @@
       "progress",
     ],
     group: [],
+    symbol: ["symbol"],
+    scene3d: ["objects", "cameraDistance", "cameraAzimuth", "cameraElevation", "fov", "lightIntensity", "lightColor", "mirror", "ground"],
+    effect: ["effect", "intensity", "speed", "seed"],
+    video: ["asset", "fit", "trim", "playbackRate", "loop"],
   };
   const esc = (v) =>
     String(v ?? "").replace(
@@ -253,21 +295,18 @@
         string(a.name, 200, `assets.${k}.name`, true);
         string(a.credit, 1000, `assets.${k}.credit`);
         string(a.source, 2048, `assets.${k}.source`);
-        if (
-          typeof a.src !== "string" ||
-          !/^data:image\/(png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$/.test(
-            a.src,
-          ) ||
-          a.src.length > 14000000
-        )
+        const video = typeof a.src === "string" && a.src.startsWith("data:video/");
+        if (typeof a.src !== "string" ||
+          !/^data:(image\/(png|jpeg|webp)|video\/(mp4|webm));base64,[A-Za-z0-9+/]+={0,2}$/.test(a.src) ||
+          a.src.length > (video ? 140000000 : 14000000))
           fail(
             `assets.${k}.src`,
-            "embed a PNG, JPEG or WebP data URI, maximum 10 MB decoded",
+            "embed PNG/JPEG/WebP (10 MB) or MP4/WebM (100 MB) as a base64 data URI",
           );
         bytes += a.src?.length || 0;
       }
-      if (bytes > 40000000)
-        fail("assets", "combined embedded assets exceed 40 MB encoded");
+      if (bytes > 160000000)
+        fail("assets", "combined embedded assets exceed 160 MB encoded");
     }
     if (!Array.isArray(p.scenes) || p.scenes.length < 1 || p.scenes.length > 60)
       return [...errors, "scenes: provide 1–60 scenes"];
@@ -352,6 +391,11 @@
         number(l.scale, 0, 100, `${a}.scale`);
         number(l.opacity, 0, 1, `${a}.opacity`);
         number(l.strokeWidth, 0, 100, `${a}.strokeWidth`);
+        number(l.shadowBlur, 0, 100, `${a}.shadowBlur`);
+        number(l.shadowX, -500, 500, `${a}.shadowX`);
+        number(l.shadowY, -500, 500, `${a}.shadowY`);
+        if (l.shadowColor !== undefined && !colorValid(l.shadowColor))
+          fail(`${a}.shadowColor`, "invalid shadow colour");
         number(l.start, 0, s.duration, `${a}.start`);
         number(l.end, 0, s.duration, `${a}.end`);
         if (l.end !== undefined && l.end < (l.start || 0))
@@ -410,14 +454,87 @@
             `${a}.icon`,
             "unknown Material icon; see assets/material-icons/catalog.json",
           );
-        if (l.type === "image") {
+        if (l.type === "symbol" && !Object.hasOwn(elements, l.symbol))
+          fail(`${a}.symbol`, "unknown Lucide symbol");
+        if (["image", "video"].includes(l.type)) {
           if (!Object.hasOwn(p.assets || {}, l.asset))
             fail(`${a}.asset`, "missing asset id");
+          else if (!p.assets[l.asset]?.src?.startsWith(`data:${l.type === "image" ? "image" : "video"}/`))
+            fail(`${a}.asset`, `expected a ${l.type} asset`);
           if (
             l.fit !== undefined &&
             !["contain", "cover", "stretch"].includes(l.fit)
           )
             fail(`${a}.fit`, "use contain, cover or stretch");
+        }
+        if (l.type === "video") {
+          number(l.trim, 0, 36000, `${a}.trim`);
+          number(l.playbackRate, 0.1, 8, `${a}.playbackRate`);
+          if (l.loop !== undefined && typeof l.loop !== "boolean")
+            fail(`${a}.loop`, "expected true or false");
+        }
+        if (["scene3d", "effect", "video"].includes(l.type) && l.parentId !== undefined)
+          fail(`${a}.parentId`, "composited layers must be root layers; group objects inside a 3D scene");
+        if (l.type === "effect") {
+          if (!EFFECTS.includes(l.effect)) fail(`${a}.effect`, "unknown effect preset");
+          number(l.intensity, 0, 1, `${a}.intensity`);
+          number(l.speed, -10, 10, `${a}.speed`);
+          number(l.seed, 0, 65535, `${a}.seed`);
+          if (l.seed !== undefined && !Number.isInteger(l.seed)) fail(`${a}.seed`, "expected an integer");
+        }
+        if (l.type === "scene3d") {
+          for (const [k, lo, hi] of [
+            ["cameraDistance", 2, 30], ["cameraAzimuth", -36000, 36000],
+            ["cameraElevation", -85, 85], ["fov", 15, 100], ["lightIntensity", 0, 20],
+          ]) number(l[k], lo, hi, `${a}.${k}`);
+          if (l.lightColor !== undefined && !colorValid(l.lightColor)) fail(`${a}.lightColor`, "invalid colour");
+          if (l.mirror !== undefined && typeof l.mirror !== "boolean") fail(`${a}.mirror`, "expected true or false");
+          if (l.ground !== undefined && typeof l.ground !== "boolean") fail(`${a}.ground`, "expected true or false");
+          if (!Array.isArray(l.objects) || !l.objects.length || l.objects.length > 40)
+            fail(`${a}.objects`, "provide 1-40 procedural objects");
+          else {
+            const objectIds = new Set();
+            l.objects.forEach((o, oi) => {
+              const oa = `${a}.objects[${oi}]`;
+              if (!obj(o)) { fail(oa, "expected an object"); return; }
+              keys(o, ["id", "geometry", "material", "color", "speed", "seed", "tracks", ...Object.keys(OBJECT_RANGES)], oa);
+              id(o.id, `${oa}.id`);
+              if (objectIds.has(o.id)) fail(`${oa}.id`, "duplicate object id");
+              objectIds.add(o.id);
+              if (!GEOMETRIES.includes(o.geometry)) fail(`${oa}.geometry`, "unknown geometry");
+              if (o.material !== undefined && !MATERIALS.includes(o.material)) fail(`${oa}.material`, "unknown material");
+              if (o.color !== undefined && (!colorValid(o.color) || o.color === "none")) fail(`${oa}.color`, "invalid colour");
+              for (const [k, [lo, hi]] of Object.entries(OBJECT_RANGES)) number(o[k], lo, hi, `${oa}.${k}`);
+              number(o.speed, -10, 10, `${oa}.speed`);
+              number(o.seed, 0, 65535, `${oa}.seed`);
+              if (o.seed !== undefined && !Number.isInteger(o.seed)) fail(`${oa}.seed`, "expected an integer");
+              if (o.tracks !== undefined) {
+                if (!Array.isArray(o.tracks) || o.tracks.length > 18) { fail(`${oa}.tracks`, "maximum 18 tracks"); return; }
+                const seen = new Set();
+                o.tracks.forEach((tr, ti) => {
+                  const ta = `${oa}.tracks[${ti}]`;
+                  if (!obj(tr)) { fail(ta, "expected an object"); return; }
+                  keys(tr, ["property", "loop", "keyframes"], ta);
+                  const range = OBJECT_RANGES[tr.property];
+                  if (!range) fail(`${ta}.property`, "unsupported 3D animated property");
+                  if (seen.has(tr.property)) fail(ta, "one track per property");
+                  seen.add(tr.property);
+                  if (tr.loop !== undefined && typeof tr.loop !== "boolean") fail(`${ta}.loop`, "expected true or false");
+                  if (!Array.isArray(tr.keyframes) || tr.keyframes.length < 2 || tr.keyframes.length > 100) { fail(ta, "provide 2-100 keyframes"); return; }
+                  let previous = -1;
+                  for (const kf of tr.keyframes) {
+                    if (!obj(kf)) { fail(ta, "expected a keyframe object"); continue; }
+                    keys(kf, ["time", "value", "easing"], ta);
+                    number(kf.time, 0, s.duration, `${ta}.time`, false);
+                    if (kf.time <= previous) fail(ta, "keyframe times must increase strictly");
+                    previous = kf.time;
+                    number(kf.value, ...(range || [-1e6, 1e6]), `${ta}.value`, false);
+                    if (kf.easing !== undefined && !Object.hasOwn(EASINGS, kf.easing)) fail(ta, "unknown easing");
+                  }
+                });
+              }
+            });
+          }
         }
         if (l.type === "line") {
           if (l.parentId !== undefined)
@@ -535,8 +652,14 @@
                   fail(`${ka}.value`, "use a colour or theme token");
               } else {
                 number(kf.value, -1e6, 1e6, `${ka}.value`, false);
-                if (["opacity", "progress"].includes(tr.property))
+                if (["opacity", "progress", "intensity"].includes(tr.property))
                   number(kf.value, 0, 1, `${ka}.value`, false);
+                const range = {
+                  speed: [-10, 10], shadowBlur: [0, 100], shadowX: [-500, 500], shadowY: [-500, 500],
+                  cameraDistance: [2, 30], cameraAzimuth: [-36000, 36000],
+                  cameraElevation: [-85, 85], fov: [15, 100], lightIntensity: [0, 20],
+                }[tr.property];
+                if (range) number(kf.value, ...range, `${ka}.value`, false);
                 if (
                   [
                     "width",
@@ -545,6 +668,7 @@
                     "scale",
                     "strokeWidth",
                     "fontSize",
+                    "shadowBlur",
                   ].includes(tr.property) &&
                   kf.value < 0
                 )
@@ -623,6 +747,15 @@
       enter: "fade",
       enterDuration: 0.6,
       exitDuration: 0,
+      radius: 20,
+      fontSize: layer.type === "chart" ? 20 : 40,
+      shadowBlur: 0,
+      shadowX: 0,
+      shadowY: 10,
+      ...(layer.type === "scene3d" ? {
+        cameraDistance: 6, cameraAzimuth: 25, cameraElevation: 15, fov: 45, lightIntensity: 3,
+      } : {}),
+      ...(layer.type === "effect" ? { intensity: 0.25, speed: 0.5 } : {}),
       ...layer,
     };
     for (const tr of l.tracks || []) l[tr.property] = trackValue(tr, t, theme);
@@ -636,6 +769,18 @@
     if (l.enter === "slide") l.x -= 60 * (1 - v);
     if (l.enter === "scale") l.scale *= 0.8 + 0.2 * v;
     return l;
+  }
+  function sampleObject(object, t, theme) {
+    const sampled = {
+      x: 0, y: 0, z: 0, rotationX: 0, rotationY: 0, rotationZ: 0,
+      scaleX: 1, scaleY: 1, scaleZ: 1,
+      roughness: 0.25, metalness: 0, transmission: 0, ior: 1.5,
+      amplitude: 0.15, frequency: 2, opacity: 1,
+      ...(MATERIAL_DEFAULTS[object.material] || MATERIAL_DEFAULTS.standard), ...object,
+    };
+    for (const track of object.tracks || [])
+      sampled[track.property] = trackValue(track, t, theme);
+    return sampled;
   }
   const mul = (a, b) => [
     a[0] * b[0] + a[2] * b[1],
@@ -668,6 +813,8 @@
     const p = project,
       s = p.scenes.find((s) => s.id === sceneId) || p.scenes[0],
       theme = p.theme;
+    if (!options.placeholders && !options.hitOnly && s.layers.some((l) => ["scene3d", "effect", "video"].includes(l.type)))
+      throw new Error("This scene contains WebGL/video layers. Use PNG/video export instead of SVG.");
     t = clamp(t, 0, s.duration);
     const layers = s.layers.map((l) => sample(l, t, s, theme)),
       map = new Map(layers.map((l) => [l.id, l])),
@@ -695,7 +842,7 @@
     const defs = [];
     let body = "";
     const bg = s.background;
-    if (bg.type !== "transparent") {
+    if (bg.type !== "transparent" && options.background !== false && !options.hitOnly) {
       let fill = color(bg.color || "$background", theme);
       if (["linear", "radial"].includes(bg.type)) {
         const c2 = color(bg.color2 || "$surface", theme);
@@ -712,7 +859,7 @@
       }
       body += `<rect width="${p.width}" height="${p.height}" fill="${fill}"/>`;
     }
-    if (bg.grid) {
+    if (bg.grid && options.background !== false && !options.hitOnly) {
       const size = bg.gridSize || 60;
       defs.push(
         `<pattern id="mf-grid" width="${size}" height="${size}" patternUnits="userSpaceOnUse"><path d="M ${size} 0 H 0 V ${size}" fill="none" stroke="${theme.muted}" stroke-width="1"/></pattern>`,
@@ -738,6 +885,12 @@
         )
         .join("")}</text>`;
     }
+    function shadowFilter(l) {
+      if (!l.shadowBlur || options.hitOnly) return "";
+      const shadowId = `mf-shadow-${l.id}`;
+      defs.push(`<filter id="${shadowId}" x="-100%" y="-100%" width="300%" height="300%"><feDropShadow dx="${l.shadowX ?? 0}" dy="${l.shadowY ?? 10}" stdDeviation="${l.shadowBlur / 2}" flood-color="${color(l.shadowColor || "#00000080", theme)}"/></filter>`);
+      return ` filter="url(#${shadowId})"`;
+    }
     function draw(l) {
       let content = "",
         fill = color(l.fill, theme),
@@ -760,6 +913,10 @@
       if (l.type === "icon") {
         const side = Math.min(l.width, l.height);
         content = `<g transform="translate(${(l.width - side) / 2} ${(l.height - side) / 2}) scale(${side / 24})">${icons[l.icon] || ""}</g>`;
+      }
+      if (l.type === "symbol") {
+        const side = Math.min(l.width, l.height);
+        content = `<g transform="translate(${(l.width - side) / 2} ${(l.height - side) / 2}) scale(${side / 24})" fill="none" stroke="${fill}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${elements[l.symbol] || ""}</g>`;
       }
       if (l.type === "image") {
         const asset = p.assets[l.asset];
@@ -852,12 +1009,15 @@
           const q = pos(u);
           content += `<circle cx="${q.x}" cy="${q.y}" r="${Math.max(3, l.strokeWidth * 1.6)}" fill="${fill}" stroke="none"/>`;
         }
-        return `<g data-layer="${esc(l.id)}" opacity="${round(l.opacity)}">${content}</g>`;
+        return `<g data-layer="${esc(l.id)}" opacity="${options.hitOnly ? 0 : round(l.opacity)}"${shadowFilter(l)}>${content}</g>`;
       }
-      return `<g data-layer="${esc(l.id)}" transform="matrix(${matrix(l).map(round).join(" ")})" opacity="${round(l.opacity)}" fill="${fill}" stroke="${stroke}" stroke-width="${l.strokeWidth}">${content}</g>`;
+      if (options.hitOnly && l.type !== "group")
+        content = `<rect width="${l.width}" height="${l.height}" fill="transparent" stroke="none" pointer-events="all"/>`;
+      const filter = shadowFilter(l);
+      return `<g data-layer="${esc(l.id)}" transform="matrix(${matrix(l).map(round).join(" ")})" opacity="${round(l.opacity)}" fill="${fill}" stroke="${stroke}" stroke-width="${l.strokeWidth}"${filter}>${content}</g>`;
     }
     body += layers
-      .filter((l) => !l.parentId)
+      .filter((l) => !l.parentId && (!options.rootIds || options.rootIds.includes(l.id)))
       .map(draw)
       .join("");
     if (options.safeArea)
@@ -874,14 +1034,23 @@
     TYPES,
     THEMES,
     EASINGS,
+    GEOMETRIES,
+    MATERIALS,
+    MATERIAL_DEFAULTS,
+    EFFECTS,
+    OBJECT_RANGES,
+    NUM_PROPS,
+    elements,
     icons,
     clone,
     validate,
     assertValid,
     renderSVG,
     sample,
+    sampleObject,
     trackValue,
     color,
     esc,
+    matrix,
   };
 });

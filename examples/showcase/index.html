@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Five original stories / Motion Forge</title>
+  <link rel="stylesheet" href="gallery.css" />
+  <script defer src="gallery.js"></script>
+</head>
+<body>
+  <header>
+    <a class="brand" href="../../">MF <span>MOTION FORGE / ORIGINALS</span></a>
+    <span><a href="../demos/">All demos</a> &nbsp;·&nbsp; <a href="../../docs/SHOWCASE.md">Production notes &amp; coverage</a></span>
+  </header>
+  <main>
+    <div class="eyebrow">FIVE WORLDS. FIFTEEN SHOTS. ONE EDITABLE ENGINE.</div>
+    <h1>Small stories.<br /><span>Made to move.</span></h1>
+    <p class="intro">Original imagined worlds, built with local vector layers, procedural 3D,
+      light, materials and precisely choreographed motion. Choose a film below.</p>
+    <nav id="stories" aria-label="Choose a story"></nav>
+    <section class="theatre" aria-label="Story player">
+      <video id="film" controls muted playsinline preload="metadata"></video>
+      <div id="playback-error" role="alert" hidden></div>
+    </section>
+    <section class="film-info">
+      <div><p class="eyebrow" id="category"></p><h2 id="title"></h2><p id="logline"></p></div>
+      <div class="links">
+        <a id="open-editor" class="primary">Open editable story</a>
+        <a id="open-prompt">Read detailed prompt</a>
+        <a id="download-project" download>Project JSON</a>
+        <a id="download-mp4" download>MP4</a>
+        <a id="download-webm" download>WebM</a>
+      </div>
+    </section>
+    <div class="toolbar">
+      <h3>THE STORYBOARD</h3>
+      <label><input id="autoplay-next" type="checkbox" checked /> Continue through all five stories</label>
+    </div>
+    <section id="shots" class="shots" aria-label="Three-shot storyboard"></section>
+    <section class="notes">
+      <div><h3>CRAFT, NOT A BLACK BOX</h3><p>Each story has its own detailed brief, an editable JSON
+        master, three saved scene previews and genuine MP4/WebM video.
+        No external model service was called. These are authored demonstrations.</p></div>
+      <div><h3>HONEST ABOUT PHYSICS</h3><p>Glass, reflection, light and shadows use physical materials.
+        Water, gas and metal motion use stylized shaders. No fluid dynamics,
+        gravity/collision solver or recursive ray tracing is claimed. Films are silent.</p></div>
+    </section>
+    <footer>1280 x 720 / 24 fps / 18 seconds each / fully local / original fictional stories</footer>
+  </main>
+</body>
+</html>

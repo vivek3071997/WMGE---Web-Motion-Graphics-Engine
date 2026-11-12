@@ -41,6 +41,10 @@ const common = {
   exitDuration: n(0, 60),
   parentId: ref("id"),
   hidden: bool,
+  shadowBlur: n(0, 100),
+  shadowX: n(-500, 500),
+  shadowY: n(-500, 500),
+  shadowColor: ref("colour"),
   tracks: { type: "array", maxItems: 20, items: ref("track") },
 };
 const font = {
@@ -98,6 +102,17 @@ const specifics = {
     progress: n(0, 1),
   },
   group: {},
+  symbol: { symbol: en(...Object.keys(M.elements)) },
+  video: {
+    asset: ref("id"), fit: en("contain", "cover", "stretch"),
+    trim: n(0, 36000), playbackRate: n(0.1, 8), loop: bool,
+  },
+  effect: { effect: en(...M.EFFECTS), intensity: n(0, 1), speed: n(-10, 10), seed: { type: "integer", minimum: 0, maximum: 65535 } },
+  scene3d: {
+    cameraDistance: n(2, 30), cameraAzimuth: n(-36000, 36000), cameraElevation: n(-85, 85),
+    fov: n(15, 100), lightIntensity: n(0, 20), lightColor: ref("colour"), mirror: bool, ground: bool,
+    objects: { type: "array", minItems: 1, maxItems: 40, items: ref("object3d") },
+  },
 };
 const defs = {
   id,
@@ -116,8 +131,8 @@ const defs = {
       name: str(200),
       src: {
         type: "string",
-        maxLength: 14000000,
-        pattern: "^data:image/(png|jpeg|webp);base64,[A-Za-z0-9+/]+={0,2}$",
+        maxLength: 140000000,
+        pattern: "^data:(image/(png|jpeg|webp)|video/(mp4|webm));base64,[A-Za-z0-9+/]+={0,2}$",
       },
       credit: str(1000),
       source: str(2048),
@@ -138,21 +153,7 @@ const defs = {
   ),
   track: obj(
     {
-      property: en(
-        "x",
-        "y",
-        "width",
-        "height",
-        "rotation",
-        "scale",
-        "opacity",
-        "fontSize",
-        "strokeWidth",
-        "radius",
-        "progress",
-        "fill",
-        "stroke",
-      ),
+      property: en(...M.NUM_PROPS, "fill", "stroke"),
       loop: bool,
       keyframes: {
         type: "array",
@@ -171,9 +172,24 @@ const defs = {
     ["property", "keyframes"],
   ),
 };
+defs.object3d = obj({
+  id: ref("id"), geometry: en(...M.GEOMETRIES), material: en(...M.MATERIALS),
+  color: ref("colour"), speed: n(-10, 10), seed: { type: "integer", minimum: 0, maximum: 65535 },
+  ...Object.fromEntries(Object.entries(M.OBJECT_RANGES).map(([key, range]) => [key, n(...range)])),
+  tracks: {
+    type: "array", maxItems: 18,
+    items: obj({
+      property: en(...Object.keys(M.OBJECT_RANGES)), loop: bool,
+      keyframes: {
+        type: "array", minItems: 2, maxItems: 100,
+        items: obj({ time: n(0, 600), value: n(-36000, 36000), easing: en(...Object.keys(M.EASINGS)) }, ["time", "value"]),
+      },
+    }, ["property", "keyframes"]),
+  },
+}, ["id", "geometry"]);
 for (const [type, props] of Object.entries(specifics)) {
   const c = { ...common };
-  if (type === "line") delete c.parentId;
+  if (["line", "video", "scene3d", "effect"].includes(type)) delete c.parentId;
   defs[type] = obj({ ...c, type: { const: type }, ...props }, [
     "id",
     "type",
@@ -181,6 +197,10 @@ for (const [type, props] of Object.entries(specifics)) {
       text: ["text"],
       icon: ["icon"],
       image: ["asset"],
+      video: ["asset"],
+      symbol: ["symbol"],
+      effect: ["effect"],
+      scene3d: ["objects"],
       path: ["d"],
       chart: ["values"],
     }[type] || []),

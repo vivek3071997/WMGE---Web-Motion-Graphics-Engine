@@ -5,7 +5,9 @@ MOTION FORGE — LOCAL MOTION GRAPHICS STUDIO
 3. Use Assets to add Material icons, images and logos.
 4. Use AI workspace to copy a prompt for any LLM, then import its JSON.
 5. Save your editable work with Export → Project JSON.
-6. Export SVG/PNG frames or a WebM preview. For production clips, read docs/EXPORT.md.
+6. Try Advanced starter for 3D/glass/water/gas/metal/shadow compositions.
+7. Add custom MP4/WebM in Assets to overlay graphics over your footage.
+8. Export PNG or supported MP4/WebM previews. For deterministic 4K production, read docs/EXPORT.md.
 
 STARTING GUIDES
 README.md — features, installation and publishing
@@ -16,5 +18,5 @@ examples/image-logo.motion.json — custom logo example
 This is the standalone open-source source package for WMGE.
 Keep your own projects, footage and exported clips in separate folders.
 
-Original code and templates: MIT. Bundled Google Material Icons: Apache-2.0.
+Original code/templates and Three.js: MIT. Material Icons: Apache-2.0. Lucide: ISC.
 Keep LICENSE, THIRD_PARTY_NOTICES.md and assets/material-icons/LICENSE when sharing.

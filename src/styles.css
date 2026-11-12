@@ -213,6 +213,15 @@ a {
   font-size: 20px;
   padding: 4px 10px;
 }
+.top-actions .demos-link {
+  border-color: #3d4a7a;
+  background: linear-gradient(135deg, #252c4a, #1d2335);
+  color: #c6ccff;
+  font-weight: 650;
+}
+.top-actions .demos-link:hover {
+  background: #343c60;
+}
 .scene-strip {
   height: 64px;
   display: flex;
@@ -335,6 +344,35 @@ a {
   max-height: 410px;
   overflow: auto;
   margin: 12px -6px;
+}
+.hybrid-stage {
+  position: relative;
+}
+.hybrid-stage > canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hybrid-stage > .stage-overlay {
+  position: absolute;
+  inset: 0;
+}
+.stage-overlay > svg {
+  width: 100%;
+  height: 100%;
+}
+.stage-error {
+  position: absolute;
+  inset: 20%;
+  padding: 20px;
+  background: #261b23;
+  color: #ffb6bb;
+}
+.object-controls {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px;
+  margin: 10px 0;
 }
 .layer-row {
   width: 100%;
@@ -750,6 +788,37 @@ a {
   padding: 4px;
   margin: 2px 0;
 }
+#local-illustration-library {
+  margin-bottom: 6px;
+}
+#local-illustration-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  max-height: 320px;
+  overflow: auto;
+  margin: 8px 0;
+}
+#local-illustration-grid button {
+  background: #f4f5fb;
+  border: 1px solid #343f54;
+  border-radius: 6px;
+  padding: 4px;
+  height: 78px;
+}
+#local-illustration-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+label.check {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#undraw-options a {
+  color: inherit;
+}
 #icon-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -823,6 +892,49 @@ dialog::backdrop {
 .button-row .button {
   margin: 0;
   font-size: 12px;
+}
+.starter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 4px;
+}
+.starter-row button {
+  border-radius: 999px;
+  padding: 4px 11px;
+  font-size: 11px;
+  background: #222a3a;
+  border: 1px solid #3a4560;
+}
+.starter-row button:hover {
+  border-color: var(--accent);
+}
+.director-readout {
+  font-size: 12px;
+  color: #c4cce0;
+  background: #141a26;
+  border: 1px solid #323c52;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  line-height: 1.55;
+}
+.director-readout:empty {
+  display: none;
+}
+.director-readout b {
+  color: var(--accent);
+  font-weight: 600;
+}
+.inline-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+}
+#auto-depth.wide {
+  width: 100%;
+  margin: 2px 0 6px;
 }
 .export-grid {
   display: grid;

@@ -144,6 +144,9 @@ fs.mkdirSync(out, { recursive: true });
         '<svg xmlns="http://www.w3.org/2000/svg" onload="alert(1)"/>',
         '<svg xmlns="http://www.w3.org/2000/svg"><image href="https://example.com/x"/></svg>',
         '<svg xmlns="http://www.w3.org/2000/svg"><rect style="fill:url(https://example.com)"/></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><style>@import url(https://example.com/x.css);</style><rect width="9" height="9"/></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><style>rect{fill:red}</style><rect width="9" height="9"/></svg>',
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9"><style>.a{background:url(https://example.com/x.png)}</style><rect class="a" width="9" height="9"/></svg>',
       ];
       return Promise.all(
         cases.map(async (s) => {
@@ -162,6 +165,229 @@ fs.mkdirSync(out, { recursive: true });
     ok(
       "scripts, event attributes, remote images and CSS are rejected in SVG imports",
     );
+    // Synthetic fixture shaped like an unDraw export (metadata attributes, inline style, #6C63FF accent).
+    const undrawStyle =
+      '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" data-name="Layer 1" width="100" height="50" viewBox="0 0 100 50"><title>fixture</title>' +
+      '<rect data-name="Path 1" width="100" height="50" fill="#6C63FF"/><circle cx="80" cy="25" r="10" style="fill:#ffffff;isolation:isolate"/></svg>';
+    const recoloured = await page.evaluate(async (svg) => {
+      const asset = await MotionForgeApp.importImage(
+        new File([svg], "fixture.svg", { type: "image/svg+xml" }),
+        { recolor: { from: "#6c63ff", to: "#ff8800" } },
+      );
+      const img = new Image();
+      img.src = asset.src;
+      await img.decode();
+      const c = document.createElement("canvas");
+      c.width = img.naturalWidth;
+      c.height = img.naturalHeight;
+      const g = c.getContext("2d");
+      g.drawImage(img, 0, 0);
+      return { w: c.width, h: c.height, px: [...g.getImageData(40, 40, 1, 1).data] };
+    }, undrawStyle);
+    assert.deepEqual([recoloured.w, recoloured.h], [2048, 1024]);
+    assert.ok(
+      Math.abs(recoloured.px[0] - 255) < 3 &&
+        Math.abs(recoloured.px[1] - 136) < 3 &&
+        recoloured.px[2] < 3,
+      `accent recoloured: ${recoloured.px}`,
+    );
+    await page.click("#tab-assets");
+    await page.selectOption("#image-source", "undraw");
+    assert.ok(await page.isVisible("#undraw-options"));
+    await page.setInputFiles("#image-upload", {
+      name: "illustration.svg",
+      mimeType: "image/svg+xml",
+      buffer: Buffer.from(undrawStyle),
+    });
+    await page.waitForFunction(
+      () => Object.keys(MotionForgeApp.getProject().assets).length === 3,
+    );
+    const undrawId = await page.evaluate(() => {
+      const [id, a] = Object.entries(MotionForgeApp.getProject().assets).at(-1);
+      return a.credit.includes("unDraw") && a.source.includes("undraw.co") ? id : null;
+    });
+    assert.ok(undrawId, "unDraw import records credit and source");
+    const before = await page.evaluate(
+      () => MotionForgeApp.getProject().scenes[0].layers.length,
+    );
+    await page
+      .locator(".asset-card")
+      .last()
+      .locator("button", { hasText: /^Depth$/ })
+      .click();
+    await page.waitForFunction(
+      (n) => MotionForgeApp.getProject().scenes[0].layers.length === n + 2,
+      before,
+    );
+    const depth = await page.evaluate(
+      (n) => MotionForgeApp.getProject().scenes[0].layers.slice(n),
+      before,
+    );
+    assert.deepEqual(depth.map((l) => l.type), ["circle", "image"]);
+    assert.equal(depth[1].asset, undrawId);
+    assert.ok(depth[1].shadowBlur > 0 && depth[1].tracks[0].property === "y");
+    await page.selectOption("#image-source", "own");
+    ok("unDraw-style SVGs import with accent recolour, credit and one-click depth");
+    const served = await browser.newPage({ viewport: { width: 1400, height: 900 } });
+    served.on("pageerror", (e) => errors.push(e.message));
+    // Synthetic fixtures shaped like illustration-tool exports (class-based <style>, PNG), not third-party art.
+    const classSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50"><defs><style>/* tool export */.cls-1{fill:#12ab34;}.cls-2,.cls-3{fill:#ffffff}</style></defs>' +
+      '<rect class="cls-1" width="100" height="50"/><circle class="cls-2" cx="80" cy="25" r="10"/></svg>';
+    const dotPng = Buffer.from(
+      "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==",
+      "base64",
+    );
+    await served.route("http://mf.test/**", (r) => {
+      const rel = decodeURIComponent(new URL(r.request().url()).pathname);
+      if (rel === "/assets/undraw-local/index.json")
+        return r.fulfill({
+          contentType: "application/json",
+          body: '["undraw_fixture-scene_ab12.svg","Team Chart.svg","dot.png","../escape.svg"]',
+        });
+      if (rel === "/assets/undraw-local/undraw_fixture-scene_ab12.svg")
+        return r.fulfill({
+          contentType: "image/svg+xml",
+          body: undrawStyle.replace('data-name="Layer 1"', 'role="img" artist="Fixture" source="https://example.invalid/"'),
+        });
+      if (rel === "/assets/undraw-local/Team Chart.svg")
+        return r.fulfill({ contentType: "image/svg+xml", body: classSvg });
+      if (rel === "/assets/undraw-local/dot.png")
+        return r.fulfill({ contentType: "image/png", body: dotPng });
+      let file = path.join(root, rel === "/" ? "index.html" : rel);
+      if (file.startsWith(root) && fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");
+      if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory())
+        return r.fulfill({ status: 404, body: "Not found" });
+      return r.fulfill({ path: file });
+    });
+    await served.goto("http://mf.test/");
+    await served.waitForFunction(() => window.ready);
+    await served.waitForSelector("#local-illustration-grid button", { state: "attached" });
+    await served.click("#tab-assets");
+    const localBefore = await served.evaluate(() => MotionForgeApp.getProject().scenes[0].layers.length);
+    await served.click('#local-illustration-grid button[data-file="undraw_fixture-scene_ab12.svg"]');
+    await served.waitForFunction(
+      (n) => MotionForgeApp.getProject().scenes[0].layers.length === n + 2,
+      localBefore,
+    );
+    assert.equal(
+      await served.evaluate(() => MotionForgeApp.getProject().scenes[0].layers.at(-1).name),
+      "fixture scene",
+    );
+    const planned = await served.evaluate(async () => {
+      const s = MotionForgeApp.getProject().scenes[0];
+      const before = s.layers.length;
+      const added = await MotionForgeApp.applyIllustrationPlan([
+        { scene: s.id, file: "undraw_fixture-scene_ab12.svg", x: 100, y: 100, width: 200, height: 150, index: 0, layer: "back", distant: true, start: 0.5, end: 2 },
+        { scene: s.id, file: "undraw_fixture-scene_ab12.svg", x: 400, y: 100, width: 200, height: 150, motion: "sway" },
+      ]);
+      const layers = MotionForgeApp.getProject().scenes[0].layers;
+      return {
+        added,
+        grew: layers.length - before,
+        back: layers[0],
+        sway: layers.slice(before + 1).find((l) => l.type === "image"),
+      };
+    });
+    assert.equal(planned.added, 2);
+    assert.equal(planned.grew, 3, "distant placement has no ground shadow; front placement has one");
+    assert.ok(!(planned.back.shadowBlur > 0) && planned.back.end === 2 && planned.back.tracks.some((k) => k.property === "x"));
+    assert.ok(planned.sway.tracks.some((k) => k.property === "rotation"));
+    assert.equal(planned.sway.asset, planned.back.asset, "one file is imported once per plan");
+    const local = await served.evaluate(async () => {
+      const all = [...document.querySelectorAll("#local-illustration-grid button")].map((b) => b.dataset.file);
+      document.querySelector('#local-illustration-grid button[data-file="Team Chart.svg"]').click();
+      await new Promise((r) => {
+        const t = setInterval(() => {
+          if (Object.values(MotionForgeApp.getProject().assets).some((a) => a.name === "Team Chart")) {
+            clearInterval(t);
+            r();
+          }
+        }, 50);
+      });
+      const asset = Object.values(MotionForgeApp.getProject().assets).find((a) => a.name === "Team Chart");
+      const img = new Image();
+      img.src = asset.src;
+      await img.decode();
+      const c = document.createElement("canvas");
+      c.width = img.naturalWidth;
+      c.height = img.naturalHeight;
+      const g = c.getContext("2d");
+      g.drawImage(img, 0, 0);
+      const px = (x, y) => [...g.getImageData(Math.round(x * c.width), Math.round(y * c.height), 1, 1).data.slice(0, 3)];
+      const s = MotionForgeApp.getProject().scenes[0];
+      const added = await MotionForgeApp.applyIllustrationPlan([
+        { scene: s.id, file: "dot.png", x: 10, y: 10, width: 80, height: 80 },
+      ]);
+      return { all, bg: px(0.1, 0.5), dot: px(0.8, 0.5), added };
+    });
+    assert.deepEqual(local.all, ["undraw_fixture-scene_ab12.svg", "Team Chart.svg", "dot.png"], "unsafe index entries are dropped");
+    assert.deepEqual(local.bg, [0x12, 0xab, 0x34], "class-based <style> fills are applied");
+    assert.deepEqual(local.dot, [0xff, 0xff, 0xff], "grouped class selectors are applied");
+    assert.equal(local.added, 1, "plans can place PNG files from the local library");
+    const directed = await served.evaluate(async () => {
+      const r = await MotionForgeApp.direct("Team meeting to review the quarterly chart: wins, roadmap, hiring");
+      const p = MotionForgeApp.getProject();
+      return { genre: r.analysis.genre, scenes: p.scenes.length, placed: r.placed, images: p.scenes.flatMap((s) => s.layers).filter((l) => l.type === "image").length };
+    });
+    assert.equal(directed.genre, "meeting");
+    assert.ok(directed.scenes >= 3 && directed.placed >= 1 && directed.images === directed.placed, JSON.stringify(directed));
+    await served.click("#ai-open");
+    await served.fill("#ai-brief", "Recipe for pancakes");
+    await served.waitForFunction(() => /Food \/ recipe/.test(document.getElementById("director-readout").textContent));
+    const smart = await served.evaluate(() => MotionForgeApp.agentPrompt());
+    for (const part of ["DIRECTOR'S EXPANDED BRIEF", "ILLUSTRATION DEPTH", "DIRECTOR DRAFT PROJECT", "QUALITY CHECKLIST"])
+      assert.ok(smart.includes(part), `smart prompt has ${part}`);
+    const wrapped = await served.evaluate(() => {
+      const p = MotionForgeApp.getProject();
+      p.name = "Wrapped plan";
+      return JSON.stringify({ project: p, illustrations: [{ scene: p.scenes[0].id, file: "dot.png", x: 40, y: 40, width: 90, height: 90, index: 0, layer: "back", distant: true }] });
+    });
+    const imagesBefore = await served.evaluate(() => MotionForgeApp.getProject().scenes[0].layers.filter((l) => l.type === "image").length);
+    await served.fill("#json-editor", wrapped);
+    await served.click("#json-apply");
+    await served.waitForFunction(
+      (n) => MotionForgeApp.getProject().name === "Wrapped plan" && MotionForgeApp.getProject().scenes[0].layers.filter((l) => l.type === "image").length === n + 1,
+      imagesBefore,
+    );
+    await served.evaluate(() => MotionForgeApp.setProject(MotionExamples.project()));
+    await served.click("#tab-assets");
+    await served.click("#auto-depth");
+    await served.waitForFunction(() => /Added \d+ matched illustration/.test(document.getElementById("toast").textContent));
+    assert.ok(await served.evaluate(() => MotionForgeApp.getProject().scenes.some((s) => s.layers.some((l) => l.type === "image"))));
+    ok("smart director builds illustrated projects, writes smart prompts and auto-adds depth");
+    assert.equal(await served.getAttribute("#demos-open", "href"), "examples/demos/");
+    await served.goto("http://mf.test/examples/demos/");
+    await served.waitForFunction(() => window.demosReady);
+    const demoCount = JSON.parse(fs.readFileSync(path.join(root, "examples/demos/manifest.json"), "utf8")).length;
+    assert.equal(await served.locator(".card").count(), demoCount);
+    await served.goto("http://mf.test/?demo=systems-in-motion&play=1&export=1&illustrations=0");
+    await served.waitForFunction(() => window.ready);
+    const start = await served.evaluate(() => ({ t: MotionForgeApp.getTime(), scene: document.querySelector(".scene.active")?.textContent || "" }));
+    assert.ok(start.t >= 0 && start.t < 1.5, `demo should start at 0, got ${start.t}`);
+    assert.match(start.scene, /01/);
+    ok("demos gallery lists every demo and ?demo=&play=1 starts at 0:00 on scene 1");
+    await served.close();
+    ok("local illustration folder lists, searches and adds SVG/PNG files with depth");
+    const videoFallback = await page.evaluate(async () => {
+      const p = structuredClone(MotionForgeApp.getProject());
+      p.assets.badvideo = { name: "bad", src: "data:video/webm;base64,AAAA" };
+      p.scenes[0].layers.push({ id: "badv", type: "video", name: "bad", asset: "badvideo", x: 0, y: 0, width: 200, height: 120, start: 0 });
+      const c = document.createElement("canvas");
+      c.width = p.width;
+      c.height = p.height;
+      const skipped = [];
+      const preview = new MotionCompositor.Compositor({ skipFailedVideo: true, onVideoSkipped: (l) => skipped.push(l.id) });
+      await preview.paint(c, p, p.scenes[0].id, 0.5);
+      preview.dispose();
+      const strict = new MotionCompositor.Compositor();
+      const rejected = await strict.paint(c, p, p.scenes[0].id, 0.5).then(() => false, () => true);
+      strict.dispose();
+      return { skipped, rejected };
+    });
+    assert.deepEqual(videoFallback.skipped, ["badv"]);
+    assert.ok(videoFallback.rejected, "export compositor stays strict about undecodable video");
+    ok("preview skips undecodable video while export stays strict");
     const prompt = await page.evaluate(() => MotionForgeApp.agentPrompt());
     assert.ok(prompt.includes("KEEP_EXISTING_EMBEDDED_ASSET"));
     assert.ok(!prompt.includes("data:image/png;base64,"));

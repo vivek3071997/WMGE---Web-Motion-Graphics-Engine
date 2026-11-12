@@ -2,59 +2,84 @@
 
 ## In the editor
 
-**Project JSON** contains all scenes and embedded raster assets. It is the editable master file. Keep it with your video project.
+**Project JSON** is the editable master: all scenes and embedded assets, including uploaded video. Keep it with your video project.
 
-**SVG frame** exports a clean vector frame at the current timestamp. Text remains text and may depend on fonts installed on the receiving machine. Uploaded images are embedded rasters; exporting SVG does not restore rasterised logos to vectors.
+**SVG frame** preserves the vector scene content; raster images remain raster. WebGL effects and video layers require a composited PNG/video export. Text may depend on fonts installed on the receiving machine.
 
-**PNG frame** exports a clean raster at the project's width/height. A transparent scene background stays transparent. Selection outlines and safe-area guides are excluded.
+**PNG frame** exports the composited scene at the project's dimensions, without selection outlines or safe-area guides.
 
-**Record scene · WebM** renders and records the current scene in real time, with no audio. Chrome/Edge are the intended browsers. Keep the tab visible; hiding it cancels recording to avoid silently delivering a throttled clip. Encoding is browser-dependent and a busy machine can drop frames. The theme background replaces transparency for video. Stopping/cancelling discards the incomplete recording. A target fps is requested, not guaranteed.
+**Record scene** records the composited canvas in real time. Available formats are detected using `MediaRecorder.isTypeSupported`: WebM and, only when supported by the browser, genuine MP4. An unsupported MP4 is never a renamed WebM. Chrome/Edge are recommended. The recording bitrate is 1–100 Mbps (editor default 24 Mbps), with integer fps 1–60 and dimensions up to 4096 pixels per side. MP4 dimensions must be even.
 
-## Exact frames with Node + Playwright
+Keep the tab visible: hiding it cancels recording. Cancelled or failed recordings are discarded, not downloaded as incomplete successes. Frame pacing uses an absolute clock, but browser encoding and frame delivery remain best effort; very slow painting fails explicitly. Use the CLI for deterministic frame sampling. Video codecs do not preserve scene transparency reliably; use an opaque scene background for normal video delivery.
 
-With Node 20 or newer installed, install the optional development tools once:
+**No audio is exported**, including audio embedded in uploaded video. Add voice-over, music and source-video audio in your video editor.
 
-```sh
+## Deterministic CLI: frames, MP4 or WebM
+
+Use Node 20 or newer. Install the optional render dependencies once:
+
+```powershell
 npm install
 npx playwright install chromium
 ```
 
-Render one scene:
+Run these examples from the package folder. Paths with spaces must be quoted.
 
-```sh
-node scripts/render.cjs --project examples/pipeline.motion.json --scene pipeline --out renders/pipeline --fps 30 --width 1920 --height 1080
+### PNG frames (no FFmpeg required)
+
+```powershell
+node scripts\render.cjs --project examples\pipeline.motion.json --scene pipeline --out "C:\Motion exports\pipeline frames" --fps 30 --width 1920 --height 1080
 ```
 
-Render the whole storyboard in scene order:
+Without `--format`, `--out` is a new or empty directory. Existing files are never overwritten, and the renderer never deletes your frame folder. Files are named `frame-000000.png`, `frame-000001.png`, etc. `render-manifest.json` records dimensions, fps, scene boundaries, requested durations and rendered durations.
 
-```sh
-node scripts/render.cjs --project examples/systems-in-motion.motion.json --scene all --out renders/full --fps 30 --width 1920 --height 1080
+### MP4 / H.264
+
+Install FFmpeg separately, including the `libx264` encoder, and put `ffmpeg.exe` on PATH or specify `--ffmpeg`:
+
+```powershell
+node scripts\render.cjs --project examples\pipeline.motion.json --scene pipeline --format mp4 --out "C:\Motion exports\pipeline.mp4" --fps 30 --width 3840 --height 2160 --crf 18 --preset slow --ffmpeg "C:\Tools\ffmpeg\bin\ffmpeg.exe"
 ```
 
-The output directory must be empty. Each file is `frame-000000.png`, `frame-000001.png`, etc. The render manifest records dimensions, fps and frame boundaries. Each scene gets `ceil(duration × fps)` frames sampled at `0, 1/fps, 2/fps, …`; the endpoint itself is not an extra frame. A duration that is not an exact frame multiple rounds up by less than one frame. Frame rendering is deterministic within the same browser/fonts/environment, independent of how quickly the computer renders.
+MP4 uses `libx264`, `yuv420p` and `+faststart`. Width and height must be even. `--crf` is an integer 0–51 (default 18; lower means higher quality/larger output). Allowed presets: `ultrafast`, `superfast`, `veryfast`, `faster`, `fast`, `medium` (default), `slow`, `slower`, `veryslow`.
 
-An alternate locally installed browser can be used with `--browser "/absolute/path/to/chrome"`. The supplied browser tests use the environment variable `BROWSER_PATH`. These are optional tools; opening and editing the web app still needs no installation.
+### WebM / VP9, whole storyboard
 
-## Encode a production clip
-
-Install FFmpeg separately, then run from the package folder:
-
-```sh
-ffmpeg -framerate 30 -i renders/pipeline/frame-%06d.png -c:v libx264 -crf 18 -preset slow -pix_fmt yuv420p -movflags +faststart pipeline.mp4
+```powershell
+node scripts\render.cjs --project examples\systems-in-motion.motion.json --scene all --format webm --out "C:\Motion exports\storyboard.webm" --fps 30 --width 1920 --height 1080 --crf 30
 ```
 
-Use even width/height for H.264. Match `-framerate` to the render manifest. This command does not overwrite an existing file without FFmpeg's confirmation. It does not add audio.
+WebM uses `libvpx-vp9` with constant-quality encoding. `--crf` is an integer 0–63 (default 30). `--preset` is MP4-only. Both video formats use 4:2:0 color and do not preserve alpha. Use even dimensions for maximum codec/player compatibility.
 
-For a transparent overlay, set the scene background to `transparent`, render PNGs, then use a codec that supports alpha. For example:
+`--out` must end in the selected container extension and must not already exist. Video export first samples all frames into a private, uniquely named `.motion-render-*` working directory beside the output. FFmpeg is launched directly with argument arrays, without a shell. Only a completed encode is published, using exclusive creation. The exact working directory is removed on success or error; user frame directories are never deleted. No video-side manifest is generated.
 
-```sh
-ffmpeg -framerate 30 -i renders/overlay/frame-%06d.png -c:v prores_ks -profile:v 4 -pix_fmt yuva444p10le overlay.mov
+### Sampling and browser selection
+
+`--scene all` (also the default) concatenates scenes in project order. A single ID renders only that scene. Each scene gets `ceil(duration × fps)` frames at `0, 1/fps, 2/fps, …`; its endpoint is not an extra frame. Non-frame-aligned durations round up by less than one frame. Async video seeking and compositing are awaited before each screenshot. The output viewport has no editor UI. Sampling is independent of render speed; visual repeatability still depends on the same browser, fonts, media decoders and graphics environment.
+
+Integer fps must be 1–60; each dimension must be 256–4096, including 3840 × 2160 4K. Unspecified fps/dimensions use project values. Unknown/duplicate options and invalid numeric values are errors.
+
+Use a locally installed browser instead of Playwright's downloaded Chromium:
+
+```powershell
+$env:BROWSER_PATH = "C:\Program Files\Google\Chrome\Application\chrome.exe"
+node scripts\render.cjs --project examples\pipeline.motion.json --out "C:\Motion exports\frames"
 ```
 
-Check codec support in your video editor. H.264 does not preserve alpha. These are encoding recipes, not a bundled FFmpeg distribution.
+`--browser "C:\Program Files\Microsoft\Edge\Application\msedge.exe"` overrides `BROWSER_PATH`. Missing FFmpeg produces an actionable error before rendering; a missing encoder or failed encode reports FFmpeg's diagnostics. FFmpeg is not bundled.
+
+## Other encoding workflows
+
+For transparent overlays, render PNG frames with a transparent scene background and encode using an alpha-capable codec supported by your editor, for example:
+
+```powershell
+ffmpeg -nostdin -n -framerate 30 -i "C:\Motion exports\overlay frames\frame-%06d.png" -an -c:v prores_ks -profile:v 4 -pix_fmt yuva444p10le "C:\Motion exports\overlay.mov"
+```
+
+Match `-framerate` to the frame manifest. `-n` refuses to overwrite an existing output. Check codec support in your video editor.
 
 ## Host shoot + graphics workflow
 
-Agree on narration beats first. Author one scene per explanation, with lead-in, reveal and final hold. Export each scene under a stable shot ID. Put timing, source credits and asset rights beside the project. Host filming and voice recording can proceed while a designer or LLM builds the JSON and previews. After the final voice-over edit, adjust scene duration/keyframes and render exact frames. Add transitions, music, sound effects and final compositing in the main video editor.
+Agree on narration beats first. Author one scene per explanation, with lead-in, reveal and final hold. Export scenes under stable shot IDs. Keep timing, credits and asset rights beside the project. After the voice-over edit, adjust durations/keyframes and render exact frames. Add transitions, music, sound effects and final compositing in the main editor.
 
-The renderer does not time-stretch narration or automatically synchronize speech. A longer `duration` extends the hold; it does not proportionally retime every animation. Changing the project aspect ratio does not redesign the layout.
+The renderer does not time-stretch narration or automatically synchronize speech. A longer `duration` extends the hold; it does not proportionally retime every animation. Changing aspect ratio does not redesign the layout.

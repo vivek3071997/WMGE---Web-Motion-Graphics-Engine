@@ -6,3 +6,5 @@ projects/
 *.log
 .env
 .env.*
+# Personal unDraw downloads: local use only, never commit or redistribute (unDraw License)
+assets/undraw-local/

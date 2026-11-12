@@ -1,0 +1,251 @@
+[
+  {
+    "key": "arm-architecture",
+    "category": "Explainers",
+    "title": "ARM Architecture",
+    "summary": "A 90-second technical film: a 3D chip assembles, then load/store, registers, pipelining, caches, the SoC and TrustZone explained step by step.",
+    "tags": [
+      "3D",
+      "Glass",
+      "Liquid metal",
+      "Diagrams"
+    ],
+    "scenes": 9,
+    "duration": 90,
+    "project": "examples/arm-architecture.motion.json",
+    "poster": "examples/demos/posters/arm-architecture.jpg",
+    "video": "examples/demos/renders/arm-architecture.mp4",
+    "prompt": "docs/ARM_ARCHITECTURE.md"
+  },
+  {
+    "key": "technology",
+    "category": "Stories",
+    "title": "LUMEN / The city wakes",
+    "summary": "At dawn, a sleeping processor hears the first signal of a city and transforms isolated sensors into a living network.",
+    "tags": [
+      "Technology",
+      "Original story",
+      "Illustrated"
+    ],
+    "scenes": 3,
+    "duration": 18,
+    "project": "examples/showcase/technology.motion.json",
+    "poster": "examples/showcase/previews/technology-1.png",
+    "video": "examples/showcase/renders/technology.mp4",
+    "prompt": "docs/showcase-prompts/technology.md"
+  },
+  {
+    "key": "scenery",
+    "category": "Stories",
+    "title": "AER / The valley that remembers",
+    "summary": "A paper bird follows the first light across a quiet valley and discovers an observatory floating above a luminous lake.",
+    "tags": [
+      "Scenery",
+      "Original story",
+      "Illustrated"
+    ],
+    "scenes": 3,
+    "duration": 18,
+    "project": "examples/showcase/scenery.motion.json",
+    "poster": "examples/showcase/previews/scenery-1.png",
+    "video": "examples/showcase/renders/scenery.mp4",
+    "prompt": "docs/showcase-prompts/scenery.md"
+  },
+  {
+    "key": "food",
+    "category": "Stories",
+    "title": "THE LITTLE TABLE / Golden-hour skillet",
+    "summary": "Mira returns from an imagined evening market with one small basket and turns it into a warm tomato-chickpea skillet for a friend.",
+    "tags": [
+      "Food / Recipe",
+      "Original story",
+      "Illustrated"
+    ],
+    "scenes": 3,
+    "duration": 18,
+    "project": "examples/showcase/food.motion.json",
+    "poster": "examples/showcase/previews/food-1.png",
+    "video": "examples/showcase/renders/food.mp4",
+    "prompt": "docs/showcase-prompts/food.md"
+  },
+  {
+    "key": "meeting",
+    "category": "Stories",
+    "title": "ROOM 04 / One clear decision",
+    "summary": "Four fictional teammates enter a meeting with separate ideas and leave with one visible decision, an owner and a next step.",
+    "tags": [
+      "Meeting",
+      "Original story",
+      "Illustrated"
+    ],
+    "scenes": 3,
+    "duration": 18,
+    "project": "examples/showcase/meeting.motion.json",
+    "poster": "examples/showcase/previews/meeting-1.png",
+    "video": "examples/showcase/renders/meeting.mp4",
+    "prompt": "docs/showcase-prompts/meeting.md"
+  },
+  {
+    "key": "social",
+    "category": "Stories",
+    "title": "THE LONG TABLE / A small kindness travels",
+    "summary": "A handwritten invitation in an imaginary neighborhood travels from one doorway to the next until strangers build a shared evening table.",
+    "tags": [
+      "Social",
+      "Original story",
+      "Illustrated"
+    ],
+    "scenes": 3,
+    "duration": 18,
+    "project": "examples/showcase/social.motion.json",
+    "poster": "examples/showcase/previews/social-1.png",
+    "video": "examples/showcase/renders/social.mp4",
+    "prompt": "docs/showcase-prompts/social.md"
+  },
+  {
+    "key": "systems-in-motion",
+    "category": "Templates",
+    "title": "Systems in Motion",
+    "summary": "Six editable technical templates: compute pipeline, layered architecture, data comparison, signal processing, timeline and an evidence card.",
+    "tags": [
+      "Charts",
+      "Connectors",
+      "Counters"
+    ],
+    "scenes": 6,
+    "duration": 60,
+    "project": "examples/systems-in-motion.motion.json",
+    "poster": "examples/demos/posters/systems-in-motion.jpg",
+    "video": "examples/demos/renders/systems-in-motion.mp4",
+    "prompt": "docs/EXAMPLE_COOKBOOK.md"
+  },
+  {
+    "key": "advanced",
+    "category": "Materials & 3D",
+    "title": "Material Studies",
+    "summary": "Glass and mirror reflection, liquid metal, a water surface, atmospheric gas and animated shadows, each as its own study.",
+    "tags": [
+      "Glass",
+      "Water",
+      "Gas",
+      "Shadows"
+    ],
+    "scenes": 5,
+    "duration": 40,
+    "project": "examples/advanced.motion.json",
+    "poster": "examples/demos/posters/advanced.jpg",
+    "video": "examples/demos/renders/advanced.mp4",
+    "prompt": "docs/EXAMPLE_COOKBOOK.md"
+  },
+  {
+    "key": "image-logo",
+    "category": "Templates",
+    "title": "Custom Logo Reveal",
+    "summary": "Brings your own image asset into an animated brand reveal.",
+    "tags": [
+      "Images",
+      "Branding"
+    ],
+    "scenes": 1,
+    "duration": 10,
+    "project": "examples/image-logo.motion.json",
+    "poster": "examples/demos/posters/image-logo.jpg",
+    "video": "examples/demos/renders/image-logo.mp4"
+  },
+  {
+    "key": "catalog",
+    "category": "Catalog",
+    "title": "Complete Element Catalog",
+    "summary": "All 35 reference scenes: every element type, 3D geometry and material, background and technical layout, each with its prompt in the cookbook.",
+    "tags": [
+      "Reference",
+      "Every element"
+    ],
+    "scenes": 35,
+    "duration": 292,
+    "project": "examples/catalog.motion.json",
+    "poster": "examples/demos/posters/catalog.jpg",
+    "video": null,
+    "prompt": "docs/EXAMPLE_COOKBOOK.md"
+  },
+  {
+    "key": "director-launch",
+    "category": "Smart director",
+    "title": "“Launch video for our AI code review app”",
+    "summary": "Product launch: a complete multi-scene film the Smart Director built from this one-line brief. Open it in the studio to add your local illustrations.",
+    "tags": [
+      "One-line brief",
+      "Product launch"
+    ],
+    "scenes": 5,
+    "duration": 30,
+    "project": "examples/demos/projects/director-launch.motion.json",
+    "poster": "examples/demos/posters/director-launch.jpg",
+    "video": "examples/demos/renders/director-launch.mp4",
+    "brief": "Launch video for our AI code review app"
+  },
+  {
+    "key": "director-recipe",
+    "category": "Smart director",
+    "title": "“Recipe for fluffy pancakes: flour, eggs, milk, butter”",
+    "summary": "Recipe: a complete multi-scene film the Smart Director built from this one-line brief. Open it in the studio to add your local illustrations.",
+    "tags": [
+      "One-line brief",
+      "Recipe"
+    ],
+    "scenes": 5,
+    "duration": 30,
+    "project": "examples/demos/projects/director-recipe.motion.json",
+    "poster": "examples/demos/posters/director-recipe.jpg",
+    "video": "examples/demos/renders/director-recipe.mp4",
+    "brief": "Recipe for fluffy pancakes: flour, eggs, milk, butter"
+  },
+  {
+    "key": "director-travel",
+    "category": "Smart director",
+    "title": "“Weekend in Kyoto”",
+    "summary": "Travel: a complete multi-scene film the Smart Director built from this one-line brief. Open it in the studio to add your local illustrations.",
+    "tags": [
+      "One-line brief",
+      "Travel"
+    ],
+    "scenes": 5,
+    "duration": 30,
+    "project": "examples/demos/projects/director-travel.motion.json",
+    "poster": "examples/demos/posters/director-travel.jpg",
+    "video": "examples/demos/renders/director-travel.mp4",
+    "brief": "Weekend in Kyoto"
+  },
+  {
+    "key": "director-results",
+    "category": "Smart director",
+    "title": "“Quarterly results: revenue grew 42% to $3.5m, 1200 new customers”",
+    "summary": "Results: a complete multi-scene film the Smart Director built from this one-line brief. Open it in the studio to add your local illustrations.",
+    "tags": [
+      "One-line brief",
+      "Results"
+    ],
+    "scenes": 6,
+    "duration": 36,
+    "project": "examples/demos/projects/director-results.motion.json",
+    "poster": "examples/demos/posters/director-results.jpg",
+    "video": "examples/demos/renders/director-results.mp4",
+    "brief": "Quarterly results: revenue grew 42% to $3.5m, 1200 new customers"
+  },
+  {
+    "key": "director-community",
+    "category": "Smart director",
+    "title": "“Celebrate 10k followers with our community”",
+    "summary": "Community: a complete multi-scene film the Smart Director built from this one-line brief. Open it in the studio to add your local illustrations.",
+    "tags": [
+      "One-line brief",
+      "Community"
+    ],
+    "scenes": 5,
+    "duration": 30,
+    "project": "examples/demos/projects/director-community.motion.json",
+    "poster": "examples/demos/posters/director-community.jpg",
+    "video": "examples/demos/renders/director-community.mp4",
+    "brief": "Celebrate 10k followers with our community"
+  }
+]

@@ -26,12 +26,17 @@ test("all distributed example projects validate and render independently", () =>
       fs.readFileSync(path.join(__dirname, "../examples", file)),
     );
     assert.deepEqual(M.validate(q), [], file);
-    for (const s of q.scenes)
+    for (const s of q.scenes) {
+      if (s.layers.some((layer) => ["scene3d", "video", "effect"].includes(layer.type))) {
+        assert.throws(() => M.renderSVG(q, s.id, 2), /PNG\/video/);
+        continue;
+      }
       for (const t of [0, 0.5, s.duration / 2, s.duration]) {
         const svg = M.renderSVG(q, s.id, t);
         assert.ok(svg.startsWith("<svg"));
         assert.ok(!svg.includes("NaN") && !svg.includes("undefined"));
       }
+    }
   }
 });
 test("seeking is deterministic and has no accumulated state", () => {
@@ -242,4 +247,62 @@ test("bundled icon paths match the pinned upstream hash manifest", () => {
     );
     assert.ok(!M.icons[item.name].includes("<script"));
   }
+});
+test("advanced presets validate and explicitly require composited exports", () => {
+  const presets = require("../src/presets.js");
+  for (const name of presets.names) {
+    const q = { ...p(), scenes: [presets.scene(name)] };
+    assert.deepEqual(M.validate(q), [], name);
+    assert.throws(() => M.renderSVG(q, "advanced", 2), /PNG\/video/);
+    assert.match(M.renderSVG(q, "advanced", 2, { hitOnly: true }), /data-layer="stage3d"/);
+  }
+});
+test("Lucide elements render as local vector strokes", () => {
+  assert.equal(Object.keys(M.elements).length, 1544);
+  const q = withLayer({ id: "symbol", type: "symbol", symbol: "box", enter: "none" });
+  assert.deepEqual(M.validate(q), []);
+  assert.match(M.renderSVG(q, "test", 0), /stroke-linecap="round"/);
+  q.scenes[0].layers[0].symbol = "invented-element";
+  assert.ok(M.validate(q).some((error) => error.includes("Lucide")));
+});
+test("video asset MIME, references, timing and composited grouping are validated", () => {
+  const q = withLayer({ id: "clip", type: "video", asset: "clip", trim: 0.5, playbackRate: 1.5 });
+  q.assets.clip = { name: "Clip", src: "data:video/webm;base64,GkXfow==" };
+  assert.deepEqual(M.validate(q), []);
+  q.scenes[0].layers[0].type = "image";
+  delete q.scenes[0].layers[0].trim;
+  delete q.scenes[0].layers[0].playbackRate;
+  assert.ok(M.validate(q).some((error) => error.includes("expected a image asset")));
+  q.scenes[0].layers = [
+    { id: "g", type: "group" },
+    { id: "clip", type: "video", asset: "clip", parentId: "g" },
+  ];
+  assert.ok(M.validate(q).some((error) => error.includes("root layers")));
+});
+test("3D tracks enforce object ranges, IDs, key ordering and material names", () => {
+  const q = withLayer({ id: "three", type: "scene3d", objects: [{ id: "a", geometry: "sphere", material: "glass",
+    tracks: [{ property: "ior", keyframes: [{ time: 0, value: 1.2 }, { time: 2, value: 1.8 }] }],
+  }] });
+  assert.deepEqual(M.validate(q), []);
+  assert.equal(M.sampleObject(q.scenes[0].layers[0].objects[0], 1, q.theme).ior, 1.5);
+  assert.equal(M.sampleObject({ material: "glass" }, 0, q.theme).transmission, 0.96);
+  q.scenes[0].layers[0].objects[0].tracks[0].keyframes[1].value = 8;
+  assert.ok(M.validate(q).some((error) => error.includes("1 to 2.5")));
+  q.scenes[0].layers[0].objects[0].material = "invented";
+  assert.ok(M.validate(q).some((error) => error.includes("unknown material")));
+  q.scenes[0].layers[0].objects.push({ id: "a", geometry: "sphere" });
+  assert.ok(M.validate(q).some((error) => error.includes("duplicate object")));
+});
+test("animated shadows and cameras remain deterministic and bounded", () => {
+  const q = withLayer({ id: "card", type: "rect", shadowBlur: 10, shadowColor: "#00000080",
+    tracks: [{ property: "shadowX", keyframes: [{ time: 0, value: -10 }, { time: 10, value: 10, easing: "linear" }] }],
+  });
+  assert.deepEqual(M.validate(q), []);
+  assert.match(M.renderSVG(q, "test", 5), /feDropShadow dx="0"/);
+  q.scenes[0].layers[0].tracks[0].property = "cameraDistance";
+  assert.ok(M.validate(q).some((error) => error.includes("2 to 30")));
+  const camera = M.sample({ type: "scene3d" }, 0, { duration: 10 }, q.theme);
+  assert.equal(camera.cameraDistance, 6);
+  assert.equal(camera.fov, 45);
+  assert.equal(M.sample({ type: "effect" }, 0, { duration: 10 }, q.theme).speed, 0.5);
 });
